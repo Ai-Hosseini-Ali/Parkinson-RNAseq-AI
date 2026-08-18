@@ -1,0 +1,2194 @@
+{
+  "project_root": "C:\\Users\\alihoseini\\Desktop\\Parkinson_AI",
+  "audit_time": "2026-08-08T18:37:36.888937",
+  "total_files": 225,
+  "summary": {
+    "python": [
+      "app\\app.py",
+      "app.py",
+      "audit_project.py",
+      "compare_expression_space.py",
+      "gui\\__init__.py",
+      "gui\\biomarker_panel.py",
+      "gui\\explainability_panel.py",
+      "gui\\main_window.py",
+      "gui\\main_window_backup.py",
+      "gui\\main_window_before_dashboard.py",
+      "gui\\main_window_old.py",
+      "gui\\plot_stability.py",
+      "gui\\report_generator.py",
+      "gui\\theme.py",
+      "leakage_free_pipeline\\train.py",
+      "main.py",
+      "model\\check_genes.py",
+      "model\\check_model.py",
+      "model\\check_scaler.py",
+      "model\\test_model.py",
+      "models\\evaluate_logistic.py",
+      "models\\evaluate_mlp.py",
+      "models\\extract_biomarkers.py",
+      "models\\logistic_regression.py",
+      "models\\logistic_regression_500genes.py",
+      "models\\mlp_classifier.py",
+      "models\\neural_network.py",
+      "models\\random_forest.py",
+      "models\\train_test_split.py",
+      "models\\xgboost_model.py",
+      "plot_stability.py",
+      "preprocessing\\add_fdr_GSE99039.py",
+      "preprocessing\\aggregate_probe_to_gene.py",
+      "preprocessing\\annotate_genes.py",
+      "preprocessing\\annotate_GSE165082.py",
+      "preprocessing\\app.py",
+      "preprocessing\\batch_correct_external_validation.py",
+      "preprocessing\\check_annotation.py",
+      "preprocessing\\check_gene_names.py",
+      "preprocessing\\check_GSE49036_platform.py",
+      "preprocessing\\check_GSE99039.py",
+      "preprocessing\\check_GSE99039_metadata.py",
+      "preprocessing\\compare_entrez_biomarkers.py",
+      "preprocessing\\compare_ml_models.py",
+      "preprocessing\\compare_previous_biomarkers.py",
+      "preprocessing\\compare_symbol_biomarkers.py",
+      "preprocessing\\consensus_two_dataset_signature.py",
+      "preprocessing\\convert_previous_ensembl_to_symbol.py",
+      "preprocessing\\create_candidate_biomarkers.py",
+      "preprocessing\\create_labels_GSE99039.py",
+      "preprocessing\\create_ml_dataset_top100.py",
+      "preprocessing\\create_pathway_input.py",
+      "preprocessing\\cross_validation_signature.py",
+      "preprocessing\\differential_expression.py",
+      "preprocessing\\differential_expression_GSE99039.py",
+      "preprocessing\\e_candidate_biomarkers.py",
+      "preprocessing\\evaluate_all_models.py",
+      "preprocessing\\evaluate_final_signature.py",
+      "preprocessing\\evaluate_GSE165082_models.py",
+      "preprocessing\\external_validation_GSE165082.py",
+      "preprocessing\\external_validation_normalized.py",
+      "preprocessing\\feature_importance_GSE99039.py",
+      "preprocessing\\feature_selection.py",
+      "preprocessing\\figure1_pca.py",
+      "preprocessing\\figure2_model_comparison.py",
+      "preprocessing\\figure3_top_biomarkers.py",
+      "preprocessing\\figure4_volcano.py",
+      "preprocessing\\filtering.py",
+      "preprocessing\\final_15gene_model.py",
+      "preprocessing\\final_biomarker_ranking.py",
+      "preprocessing\\final_compare_symbols.py",
+      "preprocessing\\find_candidate_genes.py",
+      "preprocessing\\find_characteristics.py",
+      "preprocessing\\find_disease_line.py",
+      "preprocessing\\gene_mapper.py",
+      "preprocessing\\heatmap_GSE99039.py",
+      "preprocessing\\loader.py",
+      "preprocessing\\map_ensembl_with_GPL570.py",
+      "preprocessing\\ml_cross_validation_GSE99039.py",
+      "preprocessing\\ml_logistic_GSE99039.py",
+      "preprocessing\\ml_random_forest_GSE99039.py",
+      "preprocessing\\ml_svm_GSE99039.py",
+      "preprocessing\\mlp_backprop_GSE99039.py",
+      "preprocessing\\model_loader.py",
+      "preprocessing\\network_weighted_signature.py",
+      "preprocessing\\normalization.py",
+      "preprocessing\\optimize_signature_size.py",
+      "preprocessing\\pathway_analysis.py",
+      "preprocessing\\pathway_enrichment_GSE99039.py",
+      "preprocessing\\pca_GSE99039.py",
+      "preprocessing\\predict_patient.py",
+      "preprocessing\\predictor.py",
+      "preprocessing\\prepare_dataset_GSE99039.py",
+      "preprocessing\\prepare_previous_biomarkers.py",
+      "preprocessing\\probe_to_gene.py",
+      "preprocessing\\read_GSE99039_metadata.py",
+      "preprocessing\\rebuild_entrez_annotation.py",
+      "preprocessing\\robust_final_signature.py",
+      "preprocessing\\robust_gene_mapping_compare.py",
+      "preprocessing\\roc_auc_GSE99039.py",
+      "preprocessing\\select_features.py",
+      "preprocessing\\select_top_genes_GSE99039.py",
+      "preprocessing\\stability_analysis.py",
+      "preprocessing\\string_ppi_analysis.py",
+      "preprocessing\\train_final_model.py",
+      "preprocessing\\update_biomarker_symbols.py",
+      "preprocessing\\validate_GSE49036.py",
+      "preprocessing\\validator.py",
+      "preprocessing\\volcano_GSE99039.py",
+      "report_generator.py",
+      "test_external_normalization.py"
+    ],
+    "data": [
+      ".claude\\settings.local.json",
+      "data\\annotated_candidate_genes.csv",
+      "data\\batch_external_results.csv",
+      "data\\biomarker_genes.csv",
+      "data\\biomarker_genes_symbol.csv",
+      "data\\candidate_genes.csv",
+      "data\\cv_predictions.csv",
+      "data\\differential_expression.csv",
+      "data\\evaluated_signature_genes.csv",
+      "data\\final15_model_results.csv",
+      "data\\final_15gene_model.pkl",
+      "data\\final_genes.txt",
+      "data\\final_parkinson_logistic_model.pkl",
+      "data\\final_ranked_biomarkers.csv",
+      "data\\final_scaler.pkl",
+      "data\\final_shared_biomarkers.csv",
+      "data\\gene_stability_results.csv",
+      "data\\GSE165082_external_validation_results.csv",
+      "data\\GSE165082_gene_symbol.csv",
+      "data\\GSE165082_PD-CC.counts.txt",
+      "data\\GSE49036_series_matrix.txt",
+      "data\\GSE99039_candidate_biomarkers.csv",
+      "data\\GSE99039_DE_FDR.csv",
+      "data\\GSE99039_differential_expression.csv",
+      "data\\GSE99039_feature_importance.csv",
+      "data\\GSE99039_final_dataset.csv",
+      "data\\GSE99039_gene_expression.csv",
+      "data\\GSE99039_labels.csv",
+      "data\\GSE99039_probe_gene_expression.csv",
+      "data\\GSE99039_series_matrix.txt",
+      "data\\GSE99039_top100_dataset.csv",
+      "data\\GSE99039_validated_biomarkers.csv",
+      "data\\GSE99039_validated_biomarkers_v2.csv",
+      "data\\model_comparison_results.csv",
+      "data\\network_weight_results.csv",
+      "data\\pathway_input_biomarkers.csv",
+      "data\\pathway_results\\Enrichr.human.enrichr.reports.txt",
+      "data\\previous_biomarkers_merged.csv",
+      "data\\previous_biomarkers_symbol.csv",
+      "data\\previous_with_annotation.csv",
+      "data\\robust_final_signature.csv",
+      "data\\shared_previous_current_biomarkers.csv",
+      "data\\signature_size_optimization.csv",
+      "data\\string_hub_genes.csv",
+      "data\\string_network_edges.csv",
+      "data\\top500_genes.csv",
+      "differential_expression_GSE99039.csv",
+      "differential_expression_GSE99039_FDR.csv",
+      "model\\final_genes.txt",
+      "model\\final_parkinson_logistic_model.pkl",
+      "model\\final_scaler.pkl",
+      "models\\final_genes.txt",
+      "models\\final_leakage_free_pipeline.pkl",
+      "models\\final_parkinson_logistic_model.pkl",
+      "models\\final_scaler.pkl",
+      "models\\final_selected_500_genes.txt",
+      "models\\leakage_free_genes.txt",
+      "models\\leakage_free_logistic_model.pkl",
+      "models\\leakage_free_pipeline.pkl",
+      "models\\model_metadata.pkl",
+      "Parkinson_AI_Presentation.txt",
+      "project_structure.txt",
+      "readme.txt",
+      "results\\GO_enrichment_results.csv",
+      "results\\GSE165082_model_comparison.csv",
+      "results\\GSE165082_normalized_external_validation.csv",
+      "results\\KEGG_enrichment_results.csv",
+      "results\\model_comparison_final.csv",
+      "software_structure.txt",
+      "test_patient.csv",
+      "top100_genes_GSE99039.csv",
+      "top300_genes_GSE99039.csv",
+      "top500_genes_GSE99039.csv",
+      "tree.txt"
+    ],
+    "images": [
+      "confusion_matrix_final15.png",
+      "data\\batch_corrected_PCA.png",
+      "data\\figure1_PCA.png",
+      "data\\figure2_model_comparison.png",
+      "data\\figure3_top_biomarkers.png",
+      "data\\figure4_volcano.png",
+      "data\\gene_stability_results.png",
+      "data\\GSE99039_feature_importance.png",
+      "data\\GSE99039_heatmap_top20.png",
+      "data\\GSE99039_ROC.png",
+      "data\\Heatmap_signature.png",
+      "data\\PCA_signature.png",
+      "data\\ROC_signature.png",
+      "data\\string_network.png",
+      "Figure_1.png",
+      "Figure_2.png",
+      "Figure_3.png",
+      "Figure_4.png",
+      "figure_GSE99039_PCA.png",
+      "figure_GSE99039_volcano.png",
+      "figures\\Figure5_ROC_Logistic.png",
+      "figures\\Figure6_ROC_MLP.png",
+      "figures\\gene_stability_results.png",
+      "GSE99039_heatmap_top20.png",
+      "gui\\assets\\app_icon.ico",
+      "gui\\assets\\logo_dark.svg",
+      "photo_2026-08-02_14-17-50.jpg",
+      "ROC_final15.png"
+    ],
+    "other": [
+      "build_exe.spec",
+      "data\\GPL570.annot",
+      "data\\pathway_results\\gseapy.enrichr.1760500263120.log",
+      "data\\pathway_results\\gseapy.enrichr.2153920572432.log",
+      "data\\pathway_results\\gseapy.enrichr.2411904519376.log",
+      "desktop.ini",
+      "installer.iss",
+      "installer_output\\ParkinsonAIPredictor-Setup.exe",
+      "Parkinson_AI_Final_Presentation.ipynb",
+      "Parkinson_Clinical_Report.pdf",
+      "preprocessing\\analyzis",
+      "PROJECT_REVIEW.md"
+    ]
+  },
+  "syntax_errors": [],
+  "path_report": [
+    {
+      "file": "app\\app.py",
+      "references": [
+        "Uploaded Data"
+      ],
+      "missing": []
+    },
+    {
+      "file": "audit_project.py",
+      "references": [
+        "project_audit_report.json",
+        "\n}\n\nDATA_EXTENSIONS = {\n    ",
+        ")\n            )\n\n\ndef find_paths_in_code(path):\n    results = []\n\n    try:\n        text = path.read_text(\n            encoding=",
+        "\n        )\n    except Exception:\n        return results\n\n    patterns = [\n        r",
+        "]*(?:models|data|results|figures|assets|reports)[^",
+        ",\n    ]\n\n    for pattern in patterns:\n        for match in re.findall(pattern, text, re.IGNORECASE):\n            if match not in results:\n                results.append(match)\n\n    return results\n\n\ndef check_python_syntax(path):\n    try:\n        source = path.read_text(\n            encoding=",
+        "data",
+        "].append(relative(path))\n\n        elif ext in DATA_EXTENSIONS:\n            summary[",
+        "Data files   : {len(summary[",
+        "Images/assets: {len(summary[",
+        "PATH / DATA REFERENCE CHECK",
+        "]+\\.(?:csv|txt|pkl|joblib|json|edf|fif|npy|npz|xlsx|xls|svg|png|ico))[",
+        "]*(?:\\\\|/)[^",
+        "\n        )\n\n    except Exception as e:\n        return False, str(e)\n\n\ndef check_referenced_paths(path, references):\n    missing = []\n\n    for ref in references:\n        # مسیرهای absolute را جداگانه بررسی می‌کنیم\n        candidate1 = ROOT / ref\n        candidate2 = path.parent / ref\n\n        if candidate1.exists():\n            continue\n\n        if candidate2.exists():\n            continue\n\n        # مسیرهایی که صرفاً اسم پکیج/ماژول هستند را نادیده بگیر\n        if not (\n            ",
+        "\\\\",
+        "\\nProject root:",
+        "\\nAudit time:",
+        "\\nTotal project files:",
+        "\\n",
+        "]:\n        path = ROOT / rel\n\n        ok, error = check_python_syntax(path)\n\n        if ok:\n            print(f",
+        "]:\n        path = ROOT / rel\n\n        references = find_paths_in_code(path)\n\n        if not references:\n            continue\n\n        missing = check_referenced_paths(\n            path,\n            references\n        )\n\n        result = {\n            ",
+        "\\n[WARNING] {rel}",
+        "   Missing/Unresolved: {item}",
+        "MODEL / ML FILES",
+        ": model_files,\n    }\n\n    output = ROOT / ",
+        "\\nReport saved to:",
+        "\\nIMPORTANT:"
+      ],
+      "missing": [
+        "project_audit_report.json",
+        ")\n            )\n\n\ndef find_paths_in_code(path):\n    results = []\n\n    try:\n        text = path.read_text(\n            encoding=",
+        ",\n    ]\n\n    for pattern in patterns:\n        for match in re.findall(pattern, text, re.IGNORECASE):\n            if match not in results:\n                results.append(match)\n\n    return results\n\n\ndef check_python_syntax(path):\n    try:\n        source = path.read_text(\n            encoding=",
+        "].append(relative(path))\n\n        elif ext in DATA_EXTENSIONS:\n            summary[",
+        "Images/assets: {len(summary[",
+        "PATH / DATA REFERENCE CHECK",
+        "]+\\.(?:csv|txt|pkl|joblib|json|edf|fif|npy|npz|xlsx|xls|svg|png|ico))[",
+        "]*(?:\\\\|/)[^",
+        "\n        )\n\n    except Exception as e:\n        return False, str(e)\n\n\ndef check_referenced_paths(path, references):\n    missing = []\n\n    for ref in references:\n        # مسیرهای absolute را جداگانه بررسی می‌کنیم\n        candidate1 = ROOT / ref\n        candidate2 = path.parent / ref\n\n        if candidate1.exists():\n            continue\n\n        if candidate2.exists():\n            continue\n\n        # مسیرهایی که صرفاً اسم پکیج/ماژول هستند را نادیده بگیر\n        if not (\n            ",
+        "\\nProject root:",
+        "\\nAudit time:",
+        "\\nTotal project files:",
+        "\\n",
+        "]:\n        path = ROOT / rel\n\n        ok, error = check_python_syntax(path)\n\n        if ok:\n            print(f",
+        "]:\n        path = ROOT / rel\n\n        references = find_paths_in_code(path)\n\n        if not references:\n            continue\n\n        missing = check_referenced_paths(\n            path,\n            references\n        )\n\n        result = {\n            ",
+        "\\n[WARNING] {rel}",
+        "   Missing/Unresolved: {item}",
+        "MODEL / ML FILES",
+        ": model_files,\n    }\n\n    output = ROOT / ",
+        "\\nReport saved to:",
+        "\\nIMPORTANT:"
+      ]
+    },
+    {
+      "file": "compare_expression_space.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE165082_gene_symbol.csv",
+        "\\nEXTERNAL"
+      ],
+      "missing": [
+        "\\nEXTERNAL"
+      ]
+    },
+    {
+      "file": "gui\\biomarker_panel.py",
+      "references": [
+        "final_genes.txt",
+        "models",
+        "🧬 Important Parkinson Biomarkers\\n"
+      ],
+      "missing": [
+        "final_genes.txt",
+        "🧬 Important Parkinson Biomarkers\\n"
+      ]
+    },
+    {
+      "file": "gui\\explainability_panel.py",
+      "references": [
+        "\nAI Decision Explanation panel — turns the raw prediction into something a\nclinician can actually read: which genes drove the decision, how confident\nthe model is, and a plain-language clinical summary.\n\nEverything here is populated from the *real* prediction (self.last_prediction\nand self.gene_importance in main_window.py) — nothing is hardcoded demo data.\n",
+        "No gene importance data available.",
+        "Training Dataset",
+        "Circular confidence/probability gauge, drawn with QPainter since Qt\n    has no built-in circular progress widget.",
+        "\n\n    def __init__(self, value=0, color=CYAN_400, parent=None):\n        super().__init__(parent)\n        self.value = value  # 0-100\n        self.color = QColor(color)\n        self.setFixedSize(130, 130)\n\n    def set_value(self, value, color=None):\n        self.value = value\n        if color:\n            self.color = QColor(color)\n        self.update()\n\n    def paintEvent(self, event):\n        p = QPainter(self)\n        p.setRenderHint(QPainter.Antialiasing)\n\n        rect = self.rect().adjusted(10, 10, -10, -10)\n        thickness = 11\n\n        track_pen = QPen(QColor(TRACK_BG), thickness)\n        track_pen.setCapStyle(Qt.RoundCap)\n        p.setPen(track_pen)\n        p.drawArc(rect, 90 * 16, -360 * 16)\n\n        val_pen = QPen(self.color, thickness)\n        val_pen.setCapStyle(Qt.RoundCap)\n        p.setPen(val_pen)\n        span = -int(360 * 16 * (self.value / 100))\n        p.drawArc(rect, 90 * 16, span)\n\n        p.setPen(QColor(ICE_100))\n        font = QFont(",
+        "•  <b>{gene}</b> — {phrase} ({weight*100:.0f}% relative weight)",
+        " reflect the general\n        # methodology described in this project (GEO + PPMI cohorts).\n        # Edit these two values if your actual training/validation setup\n        # differs — this file cannot verify those claims on its own.\n        rows = [\n            ("
+      ],
+      "missing": [
+        "\nAI Decision Explanation panel — turns the raw prediction into something a\nclinician can actually read: which genes drove the decision, how confident\nthe model is, and a plain-language clinical summary.\n\nEverything here is populated from the *real* prediction (self.last_prediction\nand self.gene_importance in main_window.py) — nothing is hardcoded demo data.\n",
+        "No gene importance data available.",
+        "Circular confidence/probability gauge, drawn with QPainter since Qt\n    has no built-in circular progress widget.",
+        "\n\n    def __init__(self, value=0, color=CYAN_400, parent=None):\n        super().__init__(parent)\n        self.value = value  # 0-100\n        self.color = QColor(color)\n        self.setFixedSize(130, 130)\n\n    def set_value(self, value, color=None):\n        self.value = value\n        if color:\n            self.color = QColor(color)\n        self.update()\n\n    def paintEvent(self, event):\n        p = QPainter(self)\n        p.setRenderHint(QPainter.Antialiasing)\n\n        rect = self.rect().adjusted(10, 10, -10, -10)\n        thickness = 11\n\n        track_pen = QPen(QColor(TRACK_BG), thickness)\n        track_pen.setCapStyle(Qt.RoundCap)\n        p.setPen(track_pen)\n        p.drawArc(rect, 90 * 16, -360 * 16)\n\n        val_pen = QPen(self.color, thickness)\n        val_pen.setCapStyle(Qt.RoundCap)\n        p.setPen(val_pen)\n        span = -int(360 * 16 * (self.value / 100))\n        p.drawArc(rect, 90 * 16, span)\n\n        p.setPen(QColor(ICE_100))\n        font = QFont(",
+        "•  <b>{gene}</b> — {phrase} ({weight*100:.0f}% relative weight)",
+        " reflect the general\n        # methodology described in this project (GEO + PPMI cohorts).\n        # Edit these two values if your actual training/validation setup\n        # differs — this file cannot verify those claims on its own.\n        rows = [\n            ("
+      ]
+    },
+    {
+      "file": "gui\\main_window.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "logo_dark.svg",
+        "Returns the project root in dev mode, or the folder containing the\n    bundled data files when running as a PyInstaller-frozen app.\n\n    sys._MEIPASS is set by PyInstaller",
+        "s internal bundle\n    rather than reliably next to the data files placed by COLLECT().",
+        "models",
+        "assets",
+        "Gene Expression Data",
+        "⇪\\nUpload CSV Dataset\\nClick to browse",
+        "Data Validation",
+        "\n\n    def __init__(self, values, color=CYAN_400, parent=None):\n        super().__init__(parent)\n        self.values = values\n        self.color = QColor(color)\n        self.setMinimumHeight(70)\n\n    def set_values(self, values):\n        self.values = list(values) if len(values) >= 2 else list(values) * 2\n        self.update()\n\n    def paintEvent(self, event):\n        p = QPainter(self)\n        p.setRenderHint(QPainter.Antialiasing)\n\n        w = self.width()\n        h = self.height()\n        pad = 6\n        vals = self.values\n        if len(vals) < 2:\n            vals = vals * 2\n        vmin, vmax = min(vals), max(vals)\n        span = (vmax - vmin) or 1\n\n        pts = []\n        for i, v in enumerate(vals):\n            x = pad + (w - 2 * pad) * (i / (len(vals) - 1))\n            y = h - pad - (h - 2 * pad) * ((v - vmin) / span)\n            pts.append(QPointF(x, y))\n\n        path = QPainterPath()\n        path.moveTo(pts[0].x(), h)\n        for pt in pts:\n            path.lineTo(pt)\n        path.lineTo(pts[-1].x(), h)\n        path.closeSubpath()\n\n        grad = QLinearGradient(0, 0, 0, h)\n        top = QColor(self.color)\n        top.setAlpha(70)\n        bottom = QColor(self.color)\n        bottom.setAlpha(0)\n        grad.setColorAt(0, top)\n        grad.setColorAt(1, bottom)\n        p.fillPath(path, grad)\n\n        pen = QPen(self.color, 2.2)\n        pen.setCapStyle(Qt.RoundCap)\n        pen.setJoinStyle(Qt.RoundJoin)\n        p.setPen(pen)\n        for i in range(len(pts) - 1):\n            p.drawLine(pts[i], pts[i + 1])\n\n        p.end()\n\n\nclass MainWindow(QWidget):\n\n    def __init__(self):\n        super().__init__()\n\n        print(",
+        "):\n            coefs = self.model.coef_[0]\n            max_abs = max(abs(c) for c in coefs) or 1\n            pairs = list(zip(self.genes, coefs))\n            pairs.sort(key=lambda p: abs(p[1]), reverse=True)\n            self.gene_importance = [\n                (gene, abs(coef) / max_abs, coef > 0) for gene, coef in pairs\n            ]\n        else:\n            self.gene_importance = [(g, 1 - i / len(self.genes), True) for i, g in enumerate(self.genes)]\n\n        print(",
+        "GEO / PPMI",
+        ")\n            bl.addWidget(kl)\n            bl.addWidget(vl)\n            box.setLayout(bl)\n            meta.addWidget(box, i // 2, i % 2)\n        v.addLayout(meta)\n\n        v.addSpacing(8)\n        v.addWidget(self.divider())\n        v.addSpacing(8)\n\n        # Probability trend now lives here (was in the removed right panel)\n        v.addLayout(self.section_head(",
+        "PDF created successfully:\\n{pdf}",
+        ":\n    # Fixes text/label clipping that can happen on Windows displays with\n    # scaling above 100% (125%, 150%, ...) — without this, Qt can compute\n    # a label"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "logo_dark.svg",
+        "Returns the project root in dev mode, or the folder containing the\n    bundled data files when running as a PyInstaller-frozen app.\n\n    sys._MEIPASS is set by PyInstaller",
+        "s internal bundle\n    rather than reliably next to the data files placed by COLLECT().",
+        "⇪\\nUpload CSV Dataset\\nClick to browse",
+        "\n\n    def __init__(self, values, color=CYAN_400, parent=None):\n        super().__init__(parent)\n        self.values = values\n        self.color = QColor(color)\n        self.setMinimumHeight(70)\n\n    def set_values(self, values):\n        self.values = list(values) if len(values) >= 2 else list(values) * 2\n        self.update()\n\n    def paintEvent(self, event):\n        p = QPainter(self)\n        p.setRenderHint(QPainter.Antialiasing)\n\n        w = self.width()\n        h = self.height()\n        pad = 6\n        vals = self.values\n        if len(vals) < 2:\n            vals = vals * 2\n        vmin, vmax = min(vals), max(vals)\n        span = (vmax - vmin) or 1\n\n        pts = []\n        for i, v in enumerate(vals):\n            x = pad + (w - 2 * pad) * (i / (len(vals) - 1))\n            y = h - pad - (h - 2 * pad) * ((v - vmin) / span)\n            pts.append(QPointF(x, y))\n\n        path = QPainterPath()\n        path.moveTo(pts[0].x(), h)\n        for pt in pts:\n            path.lineTo(pt)\n        path.lineTo(pts[-1].x(), h)\n        path.closeSubpath()\n\n        grad = QLinearGradient(0, 0, 0, h)\n        top = QColor(self.color)\n        top.setAlpha(70)\n        bottom = QColor(self.color)\n        bottom.setAlpha(0)\n        grad.setColorAt(0, top)\n        grad.setColorAt(1, bottom)\n        p.fillPath(path, grad)\n\n        pen = QPen(self.color, 2.2)\n        pen.setCapStyle(Qt.RoundCap)\n        pen.setJoinStyle(Qt.RoundJoin)\n        p.setPen(pen)\n        for i in range(len(pts) - 1):\n            p.drawLine(pts[i], pts[i + 1])\n\n        p.end()\n\n\nclass MainWindow(QWidget):\n\n    def __init__(self):\n        super().__init__()\n\n        print(",
+        "):\n            coefs = self.model.coef_[0]\n            max_abs = max(abs(c) for c in coefs) or 1\n            pairs = list(zip(self.genes, coefs))\n            pairs.sort(key=lambda p: abs(p[1]), reverse=True)\n            self.gene_importance = [\n                (gene, abs(coef) / max_abs, coef > 0) for gene, coef in pairs\n            ]\n        else:\n            self.gene_importance = [(g, 1 - i / len(self.genes), True) for i, g in enumerate(self.genes)]\n\n        print(",
+        "GEO / PPMI",
+        ")\n            bl.addWidget(kl)\n            bl.addWidget(vl)\n            box.setLayout(bl)\n            meta.addWidget(box, i // 2, i % 2)\n        v.addLayout(meta)\n\n        v.addSpacing(8)\n        v.addWidget(self.divider())\n        v.addSpacing(8)\n\n        # Probability trend now lives here (was in the removed right panel)\n        v.addLayout(self.section_head(",
+        "PDF created successfully:\\n{pdf}",
+        ":\n    # Fixes text/label clipping that can happen on Windows displays with\n    # scaling above 100% (125%, 150%, ...) — without this, Qt can compute\n    # a label"
+      ]
+    },
+    {
+      "file": "gui\\main_window_backup.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "models",
+        " + file\n            )\n\n\n\n    def prepare_patient(self):\n\n        data = pd.read_csv(\n            self.selected_file\n        )\n\n\n        if (\n            ",
+        " in data.columns\n            and\n            ",
+        " in data.columns\n        ):\n\n            data = data.set_index(\n                ",
+        "\n            ).T\n\n\n\n        return data[\n            self.genes\n        ]\n\n\n\n    def predict(self):\n\n        try:\n\n            patient = self.prepare_patient()\n\n\n            x = self.scaler.transform(\n                patient\n            )\n\n\n            prediction = self.model.predict(\n                x\n            )\n\n\n            probability = (\n                self.model.predict_proba(x)[0][1]\n                *\n                100\n            )\n\n\n\n            if prediction[0] == 1:\n\n                status = ",
+        "🧠 Parkinson AI Predictor\\n",
+        "Selected:\\n",
+        "Prediction:\\n"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        " + file\n            )\n\n\n\n    def prepare_patient(self):\n\n        data = pd.read_csv(\n            self.selected_file\n        )\n\n\n        if (\n            ",
+        " in data.columns\n            and\n            ",
+        " in data.columns\n        ):\n\n            data = data.set_index(\n                ",
+        "\n            ).T\n\n\n\n        return data[\n            self.genes\n        ]\n\n\n\n    def predict(self):\n\n        try:\n\n            patient = self.prepare_patient()\n\n\n            x = self.scaler.transform(\n                patient\n            )\n\n\n            prediction = self.model.predict(\n                x\n            )\n\n\n            probability = (\n                self.model.predict_proba(x)[0][1]\n                *\n                100\n            )\n\n\n\n            if prediction[0] == 1:\n\n                status = ",
+        "🧠 Parkinson AI Predictor\\n",
+        "Selected:\\n",
+        "Prediction:\\n"
+      ]
+    },
+    {
+      "file": "gui\\main_window_before_dashboard.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "models",
+        "PATIENT DATA INPUT",
+        "Upload RNA-Seq expression profile (CSV format)\\ncontaining the 14 required biomarker genes."
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "Upload RNA-Seq expression profile (CSV format)\\ncontaining the 14 required biomarker genes."
+      ]
+    },
+    {
+      "file": "gui\\main_window_old.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "models",
+        " + file\n            )\n\n\n\n    def prepare_patient(self):\n\n        data = pd.read_csv(\n            self.selected_file\n        )\n\n\n        if (\n            ",
+        " in data.columns\n            and\n            ",
+        " in data.columns\n        ):\n\n            data = data.set_index(\n                ",
+        "\n            ).T\n\n\n\n        return data[\n            self.genes\n        ]\n\n\n\n    def predict(self):\n\n        try:\n\n            patient = self.prepare_patient()\n\n\n            x = self.scaler.transform(\n                patient\n            )\n\n\n            prediction = self.model.predict(\n                x\n            )\n\n\n            probability = (\n                self.model.predict_proba(x)[0][1]\n                *\n                100\n            )\n\n\n\n            if prediction[0] == 1:\n\n                status = ",
+        "🧠 Parkinson AI Predictor\\n",
+        "Selected:\\n",
+        "Prediction:\\n"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        " + file\n            )\n\n\n\n    def prepare_patient(self):\n\n        data = pd.read_csv(\n            self.selected_file\n        )\n\n\n        if (\n            ",
+        " in data.columns\n            and\n            ",
+        " in data.columns\n        ):\n\n            data = data.set_index(\n                ",
+        "\n            ).T\n\n\n\n        return data[\n            self.genes\n        ]\n\n\n\n    def predict(self):\n\n        try:\n\n            patient = self.prepare_patient()\n\n\n            x = self.scaler.transform(\n                patient\n            )\n\n\n            prediction = self.model.predict(\n                x\n            )\n\n\n            probability = (\n                self.model.predict_proba(x)[0][1]\n                *\n                100\n            )\n\n\n\n            if prediction[0] == 1:\n\n                status = ",
+        "🧠 Parkinson AI Predictor\\n",
+        "Selected:\\n",
+        "Prediction:\\n"
+      ]
+    },
+    {
+      "file": "gui\\plot_stability.py",
+      "references": [
+        "data/gene_stability_results.csv",
+        "figures/gene_stability_results.png"
+      ],
+      "missing": []
+    },
+    {
+      "file": "gui\\report_generator.py",
+      "references": [
+        "Dataset",
+        "Parkinson AI Predictor<br/>Clinical Analysis Report",
+        "Generated by Parkinson AI Predictor<br/>"
+      ],
+      "missing": [
+        "Parkinson AI Predictor<br/>Clinical Analysis Report",
+        "Generated by Parkinson AI Predictor<br/>"
+      ]
+    },
+    {
+      "file": "gui\\theme.py",
+      "references": [
+        "\nShared light clinical theme (blue / white / light-blue / navy) used across\nmain_window.py, explainability_panel.py, biomarker_panel.py, etc.\n\nKeeping the palette and GlassPanel here means every screen re-themes\nautomatically when this file changes.\n",
+        "\n\nfrom PySide6.QtWidgets import QFrame, QGraphicsDropShadowEffect\nfrom PySide6.QtGui import QColor\nfrom PySide6.QtCore import Qt\n\n# ---------------------------------------------------------------------------\n# Palette — light clinical (blue / white / light-blue / navy)\n# ---------------------------------------------------------------------------\nNAVY_950 = ",
+        "     # primary text - deep navy (reads on white/light bg)\nSLATE_300 = ",
+        "   # muted text / labels\n\nGREEN_400 = ",
+        "   # protective / healthy / success\nAMBER_400 = ",
+        "   # moderate / warning\nRED_400 = ",
+        "     # risk-increasing / danger\n\n# Card surfaces\nGLASS_FILL = ",
+        "White card panel with a soft border - the basic building block\n    reused by every dashboard screen.\n\n    NOTE: drop shadow removed by default (was QGraphicsDropShadowEffect on\n    every card). On some Windows graphics drivers, many stacked/nested\n    graphics effects can cause child widgets to fail to paint correctly.\n    Call add_shadow() explicitly on a specific panel if you want the\n    elevated look on select cards (e.g. just the header)."
+      ],
+      "missing": [
+        "\nShared light clinical theme (blue / white / light-blue / navy) used across\nmain_window.py, explainability_panel.py, biomarker_panel.py, etc.\n\nKeeping the palette and GlassPanel here means every screen re-themes\nautomatically when this file changes.\n",
+        "\n\nfrom PySide6.QtWidgets import QFrame, QGraphicsDropShadowEffect\nfrom PySide6.QtGui import QColor\nfrom PySide6.QtCore import Qt\n\n# ---------------------------------------------------------------------------\n# Palette — light clinical (blue / white / light-blue / navy)\n# ---------------------------------------------------------------------------\nNAVY_950 = ",
+        "     # primary text - deep navy (reads on white/light bg)\nSLATE_300 = ",
+        "   # muted text / labels\n\nGREEN_400 = ",
+        "   # protective / healthy / success\nAMBER_400 = ",
+        "   # moderate / warning\nRED_400 = ",
+        "     # risk-increasing / danger\n\n# Card surfaces\nGLASS_FILL = ",
+        "White card panel with a soft border - the basic building block\n    reused by every dashboard screen.\n\n    NOTE: drop shadow removed by default (was QGraphicsDropShadowEffect on\n    every card). On some Windows graphics drivers, many stacked/nested\n    graphics effects can cause child widgets to fail to paint correctly.\n    Call add_shadow() explicitly on a specific panel if you want the\n    elevated look on select cards (e.g. just the header)."
+      ]
+    },
+    {
+      "file": "leakage_free_pipeline\\train.py",
+      "references": [
+        "GSE99039_final_dataset.csv",
+        "final_leakage_free_pipeline.pkl",
+        "final_selected_500_genes.txt",
+        "model_metadata.pkl",
+        "\n    return np.log2(X + 1)\n\n\n\n\n# =====================================\n# Paths\n# =====================================\n\n\nBASE_DIR = os.path.dirname(\n    os.path.dirname(\n        os.path.abspath(__file__)\n    )\n)\n\n\n\nDATA_PATH = os.path.join(\n    BASE_DIR,\n    ",
+        "models",
+        "\\nDataset:",
+        "\\nOriginal dataset:",
+        "RESULTS",
+        "\n        )\n\n\n\n\n\n# =====================================\n# Save metadata\n# =====================================\n\n\nmetadata = {\n\n\n    ",
+        "\n\n}\n\n\n\nmetadata_file = os.path.join(\n\n    MODEL_DIR,\n\n    ",
+        "\n\n)\n\n\n\njoblib.dump(\n\n    metadata,\n\n    metadata_file\n\n)\n\n\n\n\nprint(",
+        ")\n\nprint(\n    pipeline_file\n)\n\n\nprint(\n    genes_file\n)\n\n\nprint(\n    metadata_file\n)\n\n\n\nprint(",
+        "\\nProject:",
+        "\\nColumns:",
+        "\\nFeature matrix:",
+        "\\nClasses:",
+        "\\nRunning cross validation...",
+        "\\n===================",
+        "\\nTraining final pipeline...",
+        "\\nSelected genes:",
+        "\\n",
+        "\\nSaved:",
+        "\\nFINISHED"
+      ],
+      "missing": [
+        "GSE99039_final_dataset.csv",
+        "final_leakage_free_pipeline.pkl",
+        "final_selected_500_genes.txt",
+        "model_metadata.pkl",
+        "\n    return np.log2(X + 1)\n\n\n\n\n# =====================================\n# Paths\n# =====================================\n\n\nBASE_DIR = os.path.dirname(\n    os.path.dirname(\n        os.path.abspath(__file__)\n    )\n)\n\n\n\nDATA_PATH = os.path.join(\n    BASE_DIR,\n    ",
+        "\\nDataset:",
+        "\\nOriginal dataset:",
+        "\n\n}\n\n\n\nmetadata_file = os.path.join(\n\n    MODEL_DIR,\n\n    ",
+        "\n\n)\n\n\n\njoblib.dump(\n\n    metadata,\n\n    metadata_file\n\n)\n\n\n\n\nprint(",
+        "\\nProject:",
+        "\\nColumns:",
+        "\\nFeature matrix:",
+        "\\nClasses:",
+        "\\nRunning cross validation...",
+        "\\n===================",
+        "\\nTraining final pipeline...",
+        "\\nSelected genes:",
+        "\\n",
+        "\\nSaved:",
+        "\\nFINISHED"
+      ]
+    },
+    {
+      "file": "main.py",
+      "references": [
+        ":\n    # Fixes text/label clipping on Windows displays scaled above 100%.\n    QApplication.setHighDpiScaleFactorRoundingPolicy(\n        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough\n    )\n\n    app = QApplication(sys.argv)\n    app.setFont(QFont("
+      ],
+      "missing": [
+        ":\n    # Fixes text/label clipping on Windows displays scaled above 100%.\n    QApplication.setHighDpiScaleFactorRoundingPolicy(\n        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough\n    )\n\n    app = QApplication(sys.argv)\n    app.setFont(QFont("
+      ]
+    },
+    {
+      "file": "model\\check_genes.py",
+      "references": [
+        "final_genes.txt",
+        "\\nNumber of genes:",
+        "\\nGenes:"
+      ],
+      "missing": [
+        "\\nNumber of genes:",
+        "\\nGenes:"
+      ]
+    },
+    {
+      "file": "model\\check_model.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "\\nModel type:",
+        "\\nModel parameters:",
+        "\\nNumber of features:",
+        "\\nClasses:",
+        "\\nCoefficients:",
+        "\\nIntercept:"
+      ],
+      "missing": [
+        "\\nModel type:",
+        "\\nModel parameters:",
+        "\\nNumber of features:",
+        "\\nClasses:",
+        "\\nCoefficients:",
+        "\\nIntercept:"
+      ]
+    },
+    {
+      "file": "model\\check_scaler.py",
+      "references": [
+        "final_scaler.pkl",
+        "\\nScaler type:",
+        "\\nScaler parameters:"
+      ],
+      "missing": [
+        "\\nScaler type:",
+        "\\nScaler parameters:"
+      ]
+    },
+    {
+      "file": "model\\test_model.py",
+      "references": [
+        "model/final_parkinson_logistic_model.pkl",
+        "model/final_genes.txt",
+        ").read().splitlines()\n\ncoef = pd.DataFrame({\n    "
+      ],
+      "missing": [
+        ").read().splitlines()\n\ncoef = pd.DataFrame({\n    "
+      ]
+    },
+    {
+      "file": "models\\evaluate_logistic.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        "figures/Figure5_ROC_Logistic.png",
+        "\\t",
+        " in sample:\n        y.append(1)\n    else:\n        y.append(0)\n\ny = np.array(y)\n\n# =========================\n# Train/Test Split\n# =========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.25,\n\n    stratify=y,\n\n    random_state=42\n)\n\n# =========================\n# Model\n# =========================\n\nmodel = Pipeline([\n\n    (",
+        "\\nConfusion Matrix"
+      ],
+      "missing": [
+        "\\t",
+        " in sample:\n        y.append(1)\n    else:\n        y.append(0)\n\ny = np.array(y)\n\n# =========================\n# Train/Test Split\n# =========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.25,\n\n    stratify=y,\n\n    random_state=42\n)\n\n# =========================\n# Model\n# =========================\n\nmodel = Pipeline([\n\n    (",
+        "\\nConfusion Matrix"
+      ]
+    },
+    {
+      "file": "models\\evaluate_mlp.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        "figures/Figure6_ROC_MLP.png",
+        "\\t",
+        " in sample:\n        y.append(1)\n    else:\n        y.append(0)\n\ny = np.array(y)\n\n# ==========================\n# Train/Test Split\n# ==========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.25,\n\n    stratify=y,\n\n    random_state=42\n\n)\n\n# ==========================\n# MLP\n# ==========================\n\nmodel = Pipeline([\n\n    ("
+      ],
+      "missing": [
+        "\\t",
+        " in sample:\n        y.append(1)\n    else:\n        y.append(0)\n\ny = np.array(y)\n\n# ==========================\n# Train/Test Split\n# ==========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.25,\n\n    stratify=y,\n\n    random_state=42\n\n)\n\n# ==========================\n# MLP\n# ==========================\n\nmodel = Pipeline([\n\n    ("
+      ]
+    },
+    {
+      "file": "models\\extract_biomarkers.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        "data/biomarker_genes.csv",
+        " in sample else 0\n    for sample in X.index\n])\n\n\n# =========================\n# Scaling\n# =========================\n\nscaler = StandardScaler()\n\nX_scaled = scaler.fit_transform(X)\n\n\n# =========================\n# Train Logistic Regression\n# =========================\n\nmodel = LogisticRegression(\n    max_iter=5000\n)\n\nmodel.fit(\n    X_scaled,\n    y\n)\n\n\n# =========================\n# Gene importance\n# =========================\n\nimportance = pd.DataFrame({\n\n    ",
+        "\\t",
+        "\\nTop 20 Biomarker Genes:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        " in sample else 0\n    for sample in X.index\n])\n\n\n# =========================\n# Scaling\n# =========================\n\nscaler = StandardScaler()\n\nX_scaled = scaler.fit_transform(X)\n\n\n# =========================\n# Train Logistic Regression\n# =========================\n\nmodel = LogisticRegression(\n    max_iter=5000\n)\n\nmodel.fit(\n    X_scaled,\n    y\n)\n\n\n# =========================\n# Gene importance\n# =========================\n\nimportance = pd.DataFrame({\n\n    ",
+        "\\t",
+        "\\nTop 20 Biomarker Genes:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "models\\logistic_regression.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "\\t"
+      ],
+      "missing": [
+        "\\t"
+      ]
+    },
+    {
+      "file": "models\\logistic_regression_500genes.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        "\\t",
+        "\\nSamples:",
+        "\\nLabels:",
+        "\\nAccuracy scores:",
+        "\\nMean Accuracy:",
+        "\\nStd:"
+      ],
+      "missing": [
+        "\\t",
+        "\\nSamples:",
+        "\\nLabels:",
+        "\\nAccuracy scores:",
+        "\\nMean Accuracy:",
+        "\\nStd:"
+      ]
+    },
+    {
+      "file": "models\\mlp_classifier.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        "\\t",
+        "\\nAccuracy scores:",
+        "\\nMean Accuracy:",
+        "\\nStd:"
+      ],
+      "missing": [
+        "\\t",
+        "\\nAccuracy scores:",
+        "\\nMean Accuracy:",
+        "\\nStd:"
+      ]
+    },
+    {
+      "file": "models\\train_test_split.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "\\t",
+        "\\nX_test shape:",
+        "\\ny_train:",
+        "\\ny_test:"
+      ],
+      "missing": [
+        "\\t",
+        "\\nX_test shape:",
+        "\\ny_train:",
+        "\\ny_test:"
+      ]
+    },
+    {
+      "file": "preprocessing\\add_fdr_GSE99039.py",
+      "references": [
+        "data/GSE99039_differential_expression.csv",
+        "data/GSE99039_DE_FDR.csv",
+        "\\nTop genes:",
+        "\\nSignificant genes:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\\nTop genes:",
+        "\\nSignificant genes:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\aggregate_probe_to_gene.py",
+      "references": [
+        "data/GSE99039_probe_gene_expression.csv",
+        "data/GSE99039_gene_expression.csv",
+        ")\nprint(df.shape)\n\n# ==========================\n# Keep first gene if multiple\n# مثال:\n# MIR4640///DDR1 -> MIR4640\n# ==========================\n\ndf[",
+        "///",
+        "\\nGene matrix shape:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        ")\nprint(df.shape)\n\n# ==========================\n# Keep first gene if multiple\n# مثال:\n# MIR4640///DDR1 -> MIR4640\n# ==========================\n\ndf[",
+        "\\nGene matrix shape:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\annotate_genes.py",
+      "references": [
+        "data/candidate_genes.csv",
+        "data/annotated_candidate_genes.csv",
+        "\n)\n\n\nannotation = pd.DataFrame(result)\n\n\n# ترکیب با نتایج مدل\n\nmerged = df.merge(\n    annotation,\n    left_on=",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\n)\n\n\nannotation = pd.DataFrame(result)\n\n\n# ترکیب با نتایج مدل\n\nmerged = df.merge(\n    annotation,\n    left_on=",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\annotate_GSE165082.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/GSE165082_gene_symbol.csv",
+        "\\t"
+      ],
+      "missing": [
+        "\\t"
+      ]
+    },
+    {
+      "file": "preprocessing\\batch_correct_external_validation.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/GSE165082_gene_symbol.csv",
+        "data/batch_external_results.csv",
+        "data/batch_corrected_PCA.png",
+        "]\n\n\nX_ext = ext[available]\n\n\n\n# ===============================\n# Combine\n# ===============================\n\n\ncombined = pd.concat(\n    [\n        X_train,\n        X_ext\n    ],\n    axis=0\n)\n\n\n\n# log transform\n\ncombined = np.log2(\n    combined + 1\n)\n\n\n\nbatch = np.array(\n    [0]*len(X_train)\n    +\n    [1]*len(X_ext)\n)\n\n\n\n# ===============================\n# Batch centering\n# ===============================\n\n\ncorrected = combined.copy()\n\n\nglobal_mean = corrected.mean()\n\n\nfor b in np.unique(batch):\n\n    idx = batch == b\n\n    corrected.iloc[idx] = (\n        corrected.iloc[idx]\n        -\n        corrected.iloc[idx].mean()\n        +\n        global_mean\n    )\n\n\n\nX_train_corr = corrected.iloc[\n    :len(X_train)\n]\n\n\nX_ext_corr = corrected.iloc[\n    len(X_train):\n]\n\n\n\n# ===============================\n# Scaling\n# ===============================\n\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train_corr\n)\n\n\nX_ext_scaled = scaler.transform(\n    X_ext_corr\n)\n\n\n\n# ===============================\n# Models\n# ===============================\n\n\nmodels = {\n\n",
+        ":\nSVC(\n    probability=True,\n    random_state=42\n)\n\n}\n\n\n\nresults=[]\n\n\nfor name,model in models.items():\n\n\n    print(",
+        ",\n        acc\n    )\n\n\n    print(\n        confusion_matrix(\n            y_ext,\n            pred\n        )\n    )\n\n\n    results.append(\n        [\n            name,\n            auc,\n            acc\n        ]\n    )\n\n\n\n# ===============================\n# Save results\n# ===============================\n\n\npd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nLoading GSE99039...",
+        "\\nTraining merged:",
+        "\\nLoading GSE165082...",
+        "\\nExternal classes:",
+        "\\nAvailable genes:",
+        "\\n================",
+        "\\nFinished"
+      ],
+      "missing": [
+        "]\n\n\nX_ext = ext[available]\n\n\n\n# ===============================\n# Combine\n# ===============================\n\n\ncombined = pd.concat(\n    [\n        X_train,\n        X_ext\n    ],\n    axis=0\n)\n\n\n\n# log transform\n\ncombined = np.log2(\n    combined + 1\n)\n\n\n\nbatch = np.array(\n    [0]*len(X_train)\n    +\n    [1]*len(X_ext)\n)\n\n\n\n# ===============================\n# Batch centering\n# ===============================\n\n\ncorrected = combined.copy()\n\n\nglobal_mean = corrected.mean()\n\n\nfor b in np.unique(batch):\n\n    idx = batch == b\n\n    corrected.iloc[idx] = (\n        corrected.iloc[idx]\n        -\n        corrected.iloc[idx].mean()\n        +\n        global_mean\n    )\n\n\n\nX_train_corr = corrected.iloc[\n    :len(X_train)\n]\n\n\nX_ext_corr = corrected.iloc[\n    len(X_train):\n]\n\n\n\n# ===============================\n# Scaling\n# ===============================\n\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train_corr\n)\n\n\nX_ext_scaled = scaler.transform(\n    X_ext_corr\n)\n\n\n\n# ===============================\n# Models\n# ===============================\n\n\nmodels = {\n\n",
+        ":\nSVC(\n    probability=True,\n    random_state=42\n)\n\n}\n\n\n\nresults=[]\n\n\nfor name,model in models.items():\n\n\n    print(",
+        ",\n        acc\n    )\n\n\n    print(\n        confusion_matrix(\n            y_ext,\n            pred\n        )\n    )\n\n\n    results.append(\n        [\n            name,\n            auc,\n            acc\n        ]\n    )\n\n\n\n# ===============================\n# Save results\n# ===============================\n\n\npd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nLoading GSE99039...",
+        "\\nTraining merged:",
+        "\\nLoading GSE165082...",
+        "\\nExternal classes:",
+        "\\nAvailable genes:",
+        "\\n================",
+        "\\nFinished"
+      ]
+    },
+    {
+      "file": "preprocessing\\check_annotation.py",
+      "references": [
+        "data/GPL570.annot"
+      ],
+      "missing": []
+    },
+    {
+      "file": "preprocessing\\check_gene_names.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/biomarker_genes.csv",
+        "data/candidate_genes.csv",
+        "\\n==================="
+      ],
+      "missing": [
+        "\\n==================="
+      ]
+    },
+    {
+      "file": "preprocessing\\check_GSE49036_platform.py",
+      "references": [
+        "data/GSE49036_series_matrix.txt"
+      ],
+      "missing": []
+    },
+    {
+      "file": "preprocessing\\check_GSE99039.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt",
+        "Dataset Information",
+        "\\nData types:",
+        "\\t",
+        "\\n==========================",
+        "\\nColumns:",
+        "\\nFirst 5 rows:",
+        "\\nNumber of probes:",
+        "\\nNumber of samples:",
+        "\\nLast columns:"
+      ],
+      "missing": [
+        "\\nData types:",
+        "\\t",
+        "\\n==========================",
+        "\\nColumns:",
+        "\\nFirst 5 rows:",
+        "\\nNumber of probes:",
+        "\\nNumber of samples:",
+        "\\nLast columns:"
+      ]
+    },
+    {
+      "file": "preprocessing\\check_GSE99039_metadata.py",
+      "references": [
+        "data/GSE99039_labels.csv",
+        "data/GSE99039_final_dataset.csv",
+        "GSE99039 METADATA CHECK",
+        "\\nFILE:",
+        "\\nColumns:",
+        "\\nFirst rows:",
+        "\\n======================",
+        "\\nLabel columns:",
+        "\\n"
+      ],
+      "missing": [
+        "\\nFILE:",
+        "\\nColumns:",
+        "\\nFirst rows:",
+        "\\n======================",
+        "\\nLabel columns:",
+        "\\n"
+      ]
+    },
+    {
+      "file": "preprocessing\\compare_entrez_biomarkers.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/annotated_candidate_genes.csv",
+        "data/shared_entrez_biomarkers.csv",
+        "\\nNew genes:",
+        "\\nOverlap:",
+        "\\nShared:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "data/shared_entrez_biomarkers.csv",
+        "\\nNew genes:",
+        "\\nOverlap:",
+        "\\nShared:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\compare_ml_models.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/final_ranked_biomarkers.csv",
+        "data/model_comparison_results.csv",
+        "Dataset:",
+        "].tolist()\n\n\ngenes = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        ")\nprint(genes)\n\n\n\nX = data[genes]\n\ny = data[",
+        "]\n\n\n\n# Scaling\n\nscaler = StandardScaler()\n\nX = scaler.fit_transform(X)\n\n\n\n# ==========================\n# Models\n# ==========================\n\nmodels = {\n\n",
+        ":\nGradientBoostingClassifier(\n    random_state=42\n)\n\n}\n\n\n\n# ==========================\n# CV\n# ==========================\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nresults = []\n\n\n\nfor name, model in models.items():\n\n    print(",
+        "\n    )[:,1]\n\n\n    pred = (\n        prob >= 0.5\n    ).astype(int)\n\n\n    auc = roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc = accuracy_score(\n        y,\n        pred\n    )\n\n\n    results.append(\n        {\n            ",
+        ": acc\n        }\n    )\n\n\n\n# ==========================\n# Results\n# ==========================\n\nresults = pd.DataFrame(results)\n\nresults = results.sort_values(\n    ",
+        ")\nprint(results)\nprint(",
+        ")\n\n\n\nresults.to_csv(\n    ",
+        "\\nGenes:",
+        "\\nRunning:",
+        "\\n================",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "].tolist()\n\n\ngenes = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        "]\n\n\n\n# Scaling\n\nscaler = StandardScaler()\n\nX = scaler.fit_transform(X)\n\n\n\n# ==========================\n# Models\n# ==========================\n\nmodels = {\n\n",
+        ":\nGradientBoostingClassifier(\n    random_state=42\n)\n\n}\n\n\n\n# ==========================\n# CV\n# ==========================\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nresults = []\n\n\n\nfor name, model in models.items():\n\n    print(",
+        "\n    )[:,1]\n\n\n    pred = (\n        prob >= 0.5\n    ).astype(int)\n\n\n    auc = roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc = accuracy_score(\n        y,\n        pred\n    )\n\n\n    results.append(\n        {\n            ",
+        ": acc\n        }\n    )\n\n\n\n# ==========================\n# Results\n# ==========================\n\nresults = pd.DataFrame(results)\n\nresults = results.sort_values(\n    ",
+        ")\n\n\n\nresults.to_csv(\n    ",
+        "\\nGenes:",
+        "\\nRunning:",
+        "\\n================",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\compare_previous_biomarkers.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/biomarker_genes.csv",
+        "data/GSE99039_validated_biomarkers_v2.csv",
+        "///",
+        "\\nShared genes:",
+        "\\nSaved"
+      ],
+      "missing": [
+        "\\nShared genes:",
+        "\\nSaved"
+      ]
+    },
+    {
+      "file": "preprocessing\\compare_symbol_biomarkers.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/annotated_candidate_genes.csv",
+        "data/shared_previous_current_biomarkers.csv",
+        "\\nNew symbols:",
+        "\\nOverlap:",
+        "\\nShared biomarkers:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nNew symbols:",
+        "\\nOverlap:",
+        "\\nShared biomarkers:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\convert_previous_ensembl_to_symbol.py",
+      "references": [
+        "data/biomarker_genes.csv",
+        "data/annotated_candidate_genes.csv",
+        "data/previous_biomarkers_symbol.csv",
+        "\\nAnnotation:",
+        "\\nAfter mapping:",
+        "\\nMapped genes:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nAnnotation:",
+        "\\nAfter mapping:",
+        "\\nMapped genes:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\create_candidate_biomarkers.py",
+      "references": [
+        "data/GSE99039_DE_FDR.csv",
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_candidate_biomarkers.csv",
+        "\\nSignificant genes:",
+        "\\nFeature Importance:",
+        "\\nCandidate Biomarkers:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nSignificant genes:",
+        "\\nFeature Importance:",
+        "\\nCandidate Biomarkers:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\create_labels_GSE99039.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt",
+        "data/GSE99039_labels.csv",
+        ", len(disease))\n\n\n# ==========================\n# dataframe\n# ==========================\n\ndf = pd.DataFrame(\n    {\n        ",
+        "\\t",
+        "\\nGroups:",
+        "\\nFinal:",
+        "\\nShape:",
+        "\\nSaved"
+      ],
+      "missing": [
+        ", len(disease))\n\n\n# ==========================\n# dataframe\n# ==========================\n\ndf = pd.DataFrame(\n    {\n        ",
+        "\\t",
+        "\\nGroups:",
+        "\\nFinal:",
+        "\\nShape:",
+        "\\nSaved"
+      ]
+    },
+    {
+      "file": "preprocessing\\create_ml_dataset_top100.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "top100_genes_GSE99039.csv",
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset:",
+        ", len(genes))\n\n# ==========================\n# Keep existing genes only\n# ==========================\n\nexisting = [g for g in genes if g in data.columns]\n\nprint(",
+        ", len(existing))\n\n# ==========================\n# Create ML dataset\n# ==========================\n\ncols = existing + [",
+        "]\n\nml = data[cols]\n\nprint(",
+        "\\nML dataset:",
+        "\\nSaved successfully."
+      ],
+      "missing": [
+        ", len(genes))\n\n# ==========================\n# Keep existing genes only\n# ==========================\n\nexisting = [g for g in genes if g in data.columns]\n\nprint(",
+        "\\nML dataset:",
+        "\\nSaved successfully."
+      ]
+    },
+    {
+      "file": "preprocessing\\create_pathway_input.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/previous_biomarkers_merged.csv",
+        "data/pathway_input_biomarkers.csv",
+        "\\nSources:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nSources:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\cross_validation_signature.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/final_ranked_biomarkers.csv",
+        "data/cv_predictions.csv",
+        "Dataset:",
+        "].tolist()\n\n\n\ngenes = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        ")\nprint(genes)\n\n\n\n# ==========================\n# X y\n# ==========================\n\nX = data[genes]\n\ny = data[",
+        "\n)[:,1]\n\n\n\npred = (\n    prob >= 0.5\n).astype(int)\n\n\n\n# ==========================\n# Results\n# ==========================\n\nauc = roc_auc_score(\n    y,\n    prob\n)\n\n\naccuracy = accuracy_score(\n    y,\n    pred\n)\n\n\n\nprint(",
+        "Cross Validation Results",
+        ")\n\nprint(\n    classification_report(\n        y,\n        pred\n    )\n)\n\n\n\n# Save predictions\n\nout = pd.DataFrame({\n\n    ",
+        ": data[",
+        "\\nGenes used:",
+        "\\n===================",
+        "\\nConfusion Matrix:",
+        "\\nClassification Report:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "].tolist()\n\n\n\ngenes = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        "\n)[:,1]\n\n\n\npred = (\n    prob >= 0.5\n).astype(int)\n\n\n\n# ==========================\n# Results\n# ==========================\n\nauc = roc_auc_score(\n    y,\n    prob\n)\n\n\naccuracy = accuracy_score(\n    y,\n    pred\n)\n\n\n\nprint(",
+        ")\n\nprint(\n    classification_report(\n        y,\n        pred\n    )\n)\n\n\n\n# Save predictions\n\nout = pd.DataFrame({\n\n    ",
+        "\\nGenes used:",
+        "\\n===================",
+        "\\nConfusion Matrix:",
+        "\\nClassification Report:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\differential_expression.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/differential_expression.csv",
+        " in c\n]\n\n\n# log normalization\ndata = np.log2(counts + 1)\n\n\nresults = []\n\n\nfor i, gene in enumerate(genes):\n\n    pd_values = data.loc[i, PD_samples]\n\n    cc_values = data.loc[i, CC_samples]\n\n\n    log2fc = (\n        pd_values.mean()\n        -\n        cc_values.mean()\n    )\n\n\n    stat, p = ttest_ind(\n        pd_values,\n        cc_values,\n        equal_var=False\n    )\n\n\n    results.append([\n        gene,\n        log2fc,\n        p\n    ])\n\n\nde = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\t",
+        "\\nSaved:"
+      ],
+      "missing": [
+        " in c\n]\n\n\n# log normalization\ndata = np.log2(counts + 1)\n\n\nresults = []\n\n\nfor i, gene in enumerate(genes):\n\n    pd_values = data.loc[i, PD_samples]\n\n    cc_values = data.loc[i, CC_samples]\n\n\n    log2fc = (\n        pd_values.mean()\n        -\n        cc_values.mean()\n    )\n\n\n    stat, p = ttest_ind(\n        pd_values,\n        cc_values,\n        equal_var=False\n    )\n\n\n    results.append([\n        gene,\n        log2fc,\n        p\n    ])\n\n\nde = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\t",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\differential_expression_GSE99039.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_differential_expression.csv",
+        "Dataset:",
+        ")\nprint(len(genes))\n\nresults = []\n\n\n# =========================\n# t-test\n# =========================\n\nfor gene in genes:\n\n    stat, p = ttest_ind(\n        ipd[gene],\n        control[gene],\n        equal_var=False\n    )\n\n    logfc = (\n        ipd[gene].mean()\n        -\n        control[gene].mean()\n    )\n\n    results.append(\n        [\n            gene,\n            logfc,\n            p\n        ]\n    )\n\n\n# =========================\n# Save\n# =========================\n\nresult = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        ")\nprint(len(genes))\n\nresults = []\n\n\n# =========================\n# t-test\n# =========================\n\nfor gene in genes:\n\n    stat, p = ttest_ind(\n        ipd[gene],\n        control[gene],\n        equal_var=False\n    )\n\n    logfc = (\n        ipd[gene].mean()\n        -\n        control[gene].mean()\n    )\n\n    results.append(\n        [\n            gene,\n            logfc,\n            p\n        ]\n    )\n\n\n# =========================\n# Save\n# =========================\n\nresult = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\e_candidate_biomarkers.py",
+      "references": [
+        "data/differential_expression.csv",
+        "data/GSE99039_DE_FDR.csv",
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_candidate_biomarkers.csv",
+        ")\nprint(de.shape)\n\n\n# =========================\n# Load FDR results\n# =========================\n\nde_fdr = pd.read_csv(\n    ",
+        "\\nSignificant genes:",
+        "\\nML importance:",
+        "\\nCandidate biomarkers:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        ")\nprint(de.shape)\n\n\n# =========================\n# Load FDR results\n# =========================\n\nde_fdr = pd.read_csv(\n    ",
+        "\\nSignificant genes:",
+        "\\nML importance:",
+        "\\nCandidate biomarkers:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\evaluate_all_models.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "results/model_comparison_final.csv",
+        "Loading GSE99039 Dataset",
+        "Dataset shape:",
+        "\n\n]\n\n\n# بررسی وجود ژن‌ها\n\nmissing = [\n    g for g in genes\n    if g not in data.columns\n]\n\n\nif len(missing) > 0:\n\n    print(",
+        ")\n    print(missing)\n\n    exit()\n\n\n\nX = data[genes]\n\ny = data[",
+        ")\nprint(X_test.shape)\n\n\n\n# =====================================================\n# 4. Scaling\n# =====================================================\n\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train\n)\n\n\nX_test_scaled = scaler.transform(\n    X_test\n)\n\n\n\n# =====================================================\n# 5. Models\n# =====================================================\n\n\nmodels = {\n\n\n",
+        ":\n\nMLPClassifier(\n\n    hidden_layer_sizes=(32,16),\n\n    max_iter=2000,\n\n    random_state=42\n\n)\n\n}\n\n\n\n# =====================================================\n# 6. Evaluation\n# =====================================================\n\n\nresults = []\n\n\n\nfor name, model in models.items():\n\n\n    print(",
+        "\n    )\n\n    print(cm)\n\n\n\n    results.append({\n\n        ",
+        ":round(auc,4)\n\n    })\n\n\n\n\n# =====================================================\n# 7. Save Final Table\n# =====================================================\n\n\nresults = pd.DataFrame(results)\n\n\nprint(",
+        "*60)\n\nprint(results)\n\n\n\nresults.to_csv(\n\n    ",
+        "\\nClasses:",
+        "\\nTrain:",
+        "\\n",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\n\n]\n\n\n# بررسی وجود ژن‌ها\n\nmissing = [\n    g for g in genes\n    if g not in data.columns\n]\n\n\nif len(missing) > 0:\n\n    print(",
+        ")\nprint(X_test.shape)\n\n\n\n# =====================================================\n# 4. Scaling\n# =====================================================\n\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train\n)\n\n\nX_test_scaled = scaler.transform(\n    X_test\n)\n\n\n\n# =====================================================\n# 5. Models\n# =====================================================\n\n\nmodels = {\n\n\n",
+        ":\n\nMLPClassifier(\n\n    hidden_layer_sizes=(32,16),\n\n    max_iter=2000,\n\n    random_state=42\n\n)\n\n}\n\n\n\n# =====================================================\n# 6. Evaluation\n# =====================================================\n\n\nresults = []\n\n\n\nfor name, model in models.items():\n\n\n    print(",
+        "\n    )\n\n    print(cm)\n\n\n\n    results.append({\n\n        ",
+        ":round(auc,4)\n\n    })\n\n\n\n\n# =====================================================\n# 7. Save Final Table\n# =====================================================\n\n\nresults = pd.DataFrame(results)\n\n\nprint(",
+        "*60)\n\nprint(results)\n\n\n\nresults.to_csv(\n\n    ",
+        "\\nClasses:",
+        "\\nTrain:",
+        "\\n",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\evaluate_final_signature.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/final_ranked_biomarkers.csv",
+        "data/PCA_signature.png",
+        "data/ROC_signature.png",
+        "data/Heatmap_signature.png",
+        "data/evaluated_signature_genes.csv",
+        "PCA_signature.png",
+        "ROC_signature.png",
+        "Heatmap_signature.png",
+        "evaluated_signature_genes.csv",
+        ")\nprint(labels.head())\n\n\n\n# =====================================\n# 3. Merge expression + labels\n# =====================================\n\ndata = expression.merge(\n    labels[[",
+        "\\nMerged dataset:",
+        ")\nprint(data[",
+        ")\nprint(top_genes)\n\n\n\n# Check genes exist\n\ngenes = [\n    g for g in top_genes\n    if g in data.columns\n]\n\n\nprint(",
+        "No biomarker genes found in expression dataset",
+        "\n)\n\n\nplt.close()\n\n\n\n# =====================================\n# 9. Heatmap\n# =====================================\n\n\nplt.figure(\n    figsize=(10,8)\n)\n\n\nsns.clustermap(\n    data[genes].T,\n    cmap=",
+        "\\nFirst columns:",
+        "\\nSample column:",
+        "\\nLabels:",
+        "\\nClass distribution:",
+        "\\nSelected genes:",
+        "\\nAvailable genes:",
+        "\\n====================",
+        "\\nFiles saved:",
+        "\\nFinished successfully"
+      ],
+      "missing": [
+        "PCA_signature.png",
+        "ROC_signature.png",
+        "Heatmap_signature.png",
+        "evaluated_signature_genes.csv",
+        ")\nprint(labels.head())\n\n\n\n# =====================================\n# 3. Merge expression + labels\n# =====================================\n\ndata = expression.merge(\n    labels[[",
+        "\\nMerged dataset:",
+        ")\nprint(top_genes)\n\n\n\n# Check genes exist\n\ngenes = [\n    g for g in top_genes\n    if g in data.columns\n]\n\n\nprint(",
+        "\n)\n\n\nplt.close()\n\n\n\n# =====================================\n# 9. Heatmap\n# =====================================\n\n\nplt.figure(\n    figsize=(10,8)\n)\n\n\nsns.clustermap(\n    data[genes].T,\n    cmap=",
+        "\\nFirst columns:",
+        "\\nSample column:",
+        "\\nLabels:",
+        "\\nClass distribution:",
+        "\\nSelected genes:",
+        "\\nAvailable genes:",
+        "\\n====================",
+        "\\nFiles saved:",
+        "\\nFinished successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\evaluate_GSE165082_models.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "results/GSE165082_model_comparison.csv",
+        "Loading GSE165082 Dataset",
+        "*60)\n\n\n# ===============================\n# Load expression data\n# ===============================\n\ndf = pd.read_csv(\n    ",
+        ")\nprint(y.value_counts())\n\n\n\n# ===============================\n# Select top 500 genes\n# ===============================\n\n\ncorrelations = []\n\n\nfor gene in X.columns:\n\n    corr = abs(\n        np.corrcoef(\n            X[gene],\n            y\n        )[0,1]\n    )\n\n    correlations.append(\n        corr\n    )\n\n\ngene_scores = pd.DataFrame({\n\n    ",
+        ")\nprint(X.shape)\n\n\n\n# ===============================\n# Split\n# ===============================\n\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.2,\n\n    stratify=y,\n\n    random_state=42\n\n)\n\n\n\n# ===============================\n# Scaling\n# ===============================\n\n\nscaler = StandardScaler()\n\n\nX_train = scaler.fit_transform(\n    X_train\n)\n\n\nX_test = scaler.transform(\n    X_test\n)\n\n\n\n# ===============================\n# Models\n# ===============================\n\n\nmodels = {\n\n\n",
+        ":\nMLPClassifier(\n    hidden_layer_sizes=(32,16),\n    max_iter=2000,\n    random_state=42\n)\n\n}\n\n\n\nresults=[]\n\n\n\nfor name,model in models.items():\n\n\n    print(",
+        ",auc)\n\n    print(\n        confusion_matrix(\n            y_test,\n            pred\n        )\n    )\n\n\n    results.append({\n\n        ",
+        ":round(auc,4)\n\n    })\n\n\n\n# Save\n\nresults=pd.DataFrame(results)\n\n\nprint(",
+        ")\nprint(results)\n\n\n\nresults.to_csv(\n    ",
+        "\\t",
+        "\\nClasses:",
+        "\\nSelected genes:",
+        "\\n",
+        "\\nFINAL TABLE",
+        "\\nSaved"
+      ],
+      "missing": [
+        "*60)\n\n\n# ===============================\n# Load expression data\n# ===============================\n\ndf = pd.read_csv(\n    ",
+        ")\nprint(y.value_counts())\n\n\n\n# ===============================\n# Select top 500 genes\n# ===============================\n\n\ncorrelations = []\n\n\nfor gene in X.columns:\n\n    corr = abs(\n        np.corrcoef(\n            X[gene],\n            y\n        )[0,1]\n    )\n\n    correlations.append(\n        corr\n    )\n\n\ngene_scores = pd.DataFrame({\n\n    ",
+        ")\nprint(X.shape)\n\n\n\n# ===============================\n# Split\n# ===============================\n\n\nX_train, X_test, y_train, y_test = train_test_split(\n\n    X,\n    y,\n\n    test_size=0.2,\n\n    stratify=y,\n\n    random_state=42\n\n)\n\n\n\n# ===============================\n# Scaling\n# ===============================\n\n\nscaler = StandardScaler()\n\n\nX_train = scaler.fit_transform(\n    X_train\n)\n\n\nX_test = scaler.transform(\n    X_test\n)\n\n\n\n# ===============================\n# Models\n# ===============================\n\n\nmodels = {\n\n\n",
+        ":\nMLPClassifier(\n    hidden_layer_sizes=(32,16),\n    max_iter=2000,\n    random_state=42\n)\n\n}\n\n\n\nresults=[]\n\n\n\nfor name,model in models.items():\n\n\n    print(",
+        ",auc)\n\n    print(\n        confusion_matrix(\n            y_test,\n            pred\n        )\n    )\n\n\n    results.append({\n\n        ",
+        ":round(auc,4)\n\n    })\n\n\n\n# Save\n\nresults=pd.DataFrame(results)\n\n\nprint(",
+        ")\nprint(results)\n\n\n\nresults.to_csv(\n    ",
+        "\\t",
+        "\\nClasses:",
+        "\\nSelected genes:",
+        "\\n",
+        "\\nFINAL TABLE",
+        "\\nSaved"
+      ]
+    },
+    {
+      "file": "preprocessing\\external_validation_GSE165082.py",
+      "references": [
+        "data/GSE165082_gene_symbol.csv",
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/GSE165082_external_validation_results.csv",
+        "\n]\n\n\n# ==================================\n# Load GSE165082 external dataset\n# ==================================\n\nprint(",
+        ")\nprint(y_ext.value_counts())\n\n\n# ==================================\n# Load training dataset\n# ==================================\n\nprint(",
+        ",\nlen(available)\n)\n\n\n# ==================================\n# Normalize\n# ==================================\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train\n)\n\n\nX_ext_scaled = scaler.transform(\n    X_ext\n)\n\n\n\n# ==================================\n# Train final model\n# ==================================\n\nmodel = LogisticRegression(\n    max_iter=5000,\n    random_state=42\n)\n\n\nmodel.fit(\n    X_train_scaled,\n    y_train\n)\n\n\n# ==================================\n# External prediction\n# ==================================\n\nprob = model.predict_proba(\n    X_ext_scaled\n)[:,1]\n\n\npred = model.predict(\n    X_ext_scaled\n)\n\n\n# ==================================\n# Results\n# ==================================\n\nauc = roc_auc_score(\n    y_ext,\n    prob\n)\n\n\nacc = accuracy_score(\n    y_ext,\n    pred\n)\n\n\nprint(",
+        ")\n\nprint(\nconfusion_matrix(\n    y_ext,\n    pred\n)\n)\n\n\nprint(\nclassification_report(\n    y_ext,\n    pred\n)\n)\n\n\n\n# save\n\nresult = pd.DataFrame(\n{\n",
+        "\\nExternal classes:",
+        "\\nLoading GSE99039",
+        "\\nGenes used:",
+        "\\nFeature number:",
+        "\\n======================",
+        "\\nConfusion Matrix",
+        "\\nSaved:"
+      ],
+      "missing": [
+        ")\nprint(y_ext.value_counts())\n\n\n# ==================================\n# Load training dataset\n# ==================================\n\nprint(",
+        ",\nlen(available)\n)\n\n\n# ==================================\n# Normalize\n# ==================================\n\nscaler = StandardScaler()\n\n\nX_train_scaled = scaler.fit_transform(\n    X_train\n)\n\n\nX_ext_scaled = scaler.transform(\n    X_ext\n)\n\n\n\n# ==================================\n# Train final model\n# ==================================\n\nmodel = LogisticRegression(\n    max_iter=5000,\n    random_state=42\n)\n\n\nmodel.fit(\n    X_train_scaled,\n    y_train\n)\n\n\n# ==================================\n# External prediction\n# ==================================\n\nprob = model.predict_proba(\n    X_ext_scaled\n)[:,1]\n\n\npred = model.predict(\n    X_ext_scaled\n)\n\n\n# ==================================\n# Results\n# ==================================\n\nauc = roc_auc_score(\n    y_ext,\n    prob\n)\n\n\nacc = accuracy_score(\n    y_ext,\n    pred\n)\n\n\nprint(",
+        ")\n\nprint(\nconfusion_matrix(\n    y_ext,\n    pred\n)\n)\n\n\nprint(\nclassification_report(\n    y_ext,\n    pred\n)\n)\n\n\n\n# save\n\nresult = pd.DataFrame(\n{\n",
+        "\\nExternal classes:",
+        "\\nLoading GSE99039",
+        "\\nGenes used:",
+        "\\nFeature number:",
+        "\\n======================",
+        "\\nConfusion Matrix",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\external_validation_normalized.py",
+      "references": [
+        "model/final_parkinson_logistic_model.pkl",
+        "model/final_scaler.pkl",
+        "model/final_genes.txt",
+        "data/GSE165082_gene_symbol.csv",
+        "results/GSE165082_normalized_external_validation.csv",
+        " in s:\n        labels.append(0)\n\n\ny_ext=np.array(labels)\n\n\n\n# ==========================\n# Select genes\n# ==========================\n\nX_ext = X_ext[genes]\n\n\n\n# ==========================\n# Same scaler\n# ==========================\n\nX_scaled = scaler.transform(\n    X_ext\n)\n\n\n\n# ==========================\n# Prediction\n# ==========================\n\nprob = model.predict_proba(\n    X_scaled\n)[:,1]\n\n\npred = model.predict(\n    X_scaled\n)\n\n\n\n# ==========================\n# Results\n# ==========================\n\nprint(",
+        ",\nroc_auc_score(\n    y_ext,\n    prob\n)\n)\n\n\nprint(\nclassification_report(\n    y_ext,\n    pred\n)\n)\n\n\nresult=pd.DataFrame(\n{\n",
+        "\\nProbability:",
+        "\\nConfusion Matrix:",
+        "\\nAccuracy:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        " in s:\n        labels.append(0)\n\n\ny_ext=np.array(labels)\n\n\n\n# ==========================\n# Select genes\n# ==========================\n\nX_ext = X_ext[genes]\n\n\n\n# ==========================\n# Same scaler\n# ==========================\n\nX_scaled = scaler.transform(\n    X_ext\n)\n\n\n\n# ==========================\n# Prediction\n# ==========================\n\nprob = model.predict_proba(\n    X_scaled\n)[:,1]\n\n\npred = model.predict(\n    X_scaled\n)\n\n\n\n# ==========================\n# Results\n# ==========================\n\nprint(",
+        ",\nroc_auc_score(\n    y_ext,\n    prob\n)\n)\n\n\nprint(\nclassification_report(\n    y_ext,\n    pred\n)\n)\n\n\nresult=pd.DataFrame(\n{\n",
+        "\\nProbability:",
+        "\\nConfusion Matrix:",
+        "\\nAccuracy:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\feature_importance_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_feature_importance.png",
+        "]\n\n# ==========================\n# Train model\n# ==========================\n\nmodel = RandomForestClassifier(\n    n_estimators=500,\n    random_state=42\n)\n\nmodel.fit(X, y)\n\n# ==========================\n# Feature Importance\n# ==========================\n\nimportance = pd.DataFrame({\n    "
+      ],
+      "missing": [
+        "]\n\n# ==========================\n# Train model\n# ==========================\n\nmodel = RandomForestClassifier(\n    n_estimators=500,\n    random_state=42\n)\n\nmodel.fit(X, y)\n\n# ==========================\n# Feature Importance\n# ==========================\n\nimportance = pd.DataFrame({\n    "
+      ]
+    },
+    {
+      "file": "preprocessing\\feature_selection.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "\\t",
+        "\\nFirst rows:",
+        "\\nLabels:",
+        "\\nNumber of samples in each class:"
+      ],
+      "missing": [
+        "\\t",
+        "\\nFirst rows:",
+        "\\nLabels:",
+        "\\nNumber of samples in each class:"
+      ]
+    },
+    {
+      "file": "preprocessing\\figure1_pca.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/figure1_PCA.png",
+        "\\t"
+      ],
+      "missing": [
+        "\\t"
+      ]
+    },
+    {
+      "file": "preprocessing\\figure2_model_comparison.py",
+      "references": [
+        "data/figure2_model_comparison.png",
+        "Figure saved: data/figure2_model_comparison.png",
+        "\n]\n\naccuracy = [0.50, 0.92]\n\nplt.figure(figsize=(6,5))\n\nbars = plt.bar(models, accuracy)\n\nplt.ylabel(",
+        "All genes\\n(25,329)",
+        "Selected genes\\n(500)",
+        ")\nplt.ylim(0, 1.0)\n\nfor bar, acc in zip(bars, accuracy):\n    plt.text(\n        bar.get_x() + bar.get_width()/2,\n        acc + 0.02,\n        f"
+      ],
+      "missing": [
+        "Figure saved: data/figure2_model_comparison.png",
+        "\n]\n\naccuracy = [0.50, 0.92]\n\nplt.figure(figsize=(6,5))\n\nbars = plt.bar(models, accuracy)\n\nplt.ylabel(",
+        "All genes\\n(25,329)",
+        "Selected genes\\n(500)",
+        ")\nplt.ylim(0, 1.0)\n\nfor bar, acc in zip(bars, accuracy):\n    plt.text(\n        bar.get_x() + bar.get_width()/2,\n        acc + 0.02,\n        f"
+      ]
+    },
+    {
+      "file": "preprocessing\\figure3_top_biomarkers.py",
+      "references": [
+        "data/biomarker_genes_symbol.csv",
+        "data/figure3_top_biomarkers.png",
+        ", fontsize=14)\n\n# نمایش مقدار ضریب کنار هر میله\nfor bar in bars:\n    width = bar.get_width()\n    plt.text(\n        width + 0.002,\n        bar.get_y() + bar.get_height()/2,\n        f"
+      ],
+      "missing": [
+        ", fontsize=14)\n\n# نمایش مقدار ضریب کنار هر میله\nfor bar in bars:\n    width = bar.get_width()\n    plt.text(\n        width + 0.002,\n        bar.get_y() + bar.get_height()/2,\n        f"
+      ]
+    },
+    {
+      "file": "preprocessing\\figure4_volcano.py",
+      "references": [
+        "data/differential_expression.csv",
+        "data/figure4_volcano.png"
+      ],
+      "missing": []
+    },
+    {
+      "file": "preprocessing\\final_15gene_model.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/robust_final_signature.csv",
+        "data/final15_model_results.csv",
+        "data/final_15gene_model.pkl",
+        "ROC_final15.png",
+        "confusion_matrix_final15.png",
+        "}\n    )\n\n\n# Merge labels\n\ndata = expression.merge(\n    labels[[",
+        ")\nprint(data.shape)\n\n\n# ============================\n# Select 15 genes\n# ============================\n\ngenes = (\n    signature\n    .sort_values(\n        ",
+        ")\nprint(genes)\n\n\navailable = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        ")\nprint(available)\n\n\n\nX = data[available]\n\ny = data[",
+        ")\nprint(y.value_counts())\n\n\n# ============================\n# Models\n# ============================\n\nmodels = {\n\n",
+        ",\n     LogisticRegression(\n        max_iter=2000,\n        random_state=42\n     ))\n])\n\n}\n\n\n# ============================\n# Cross validation\n# ============================\n\ncv = StratifiedKFold(\n    n_splits=10,\n    shuffle=True,\n    random_state=42\n)\n\n\nresults=[]\n\n\nfor name, model in models.items():\n\n    print(",
+        ", acc)\n\n\n    print(\n        confusion_matrix(\n            y,\n            pred\n        )\n    )\n\n\n    results.append(\n        [\n            name,\n            auc,\n            acc\n        ]\n    )\n\n\nresults_df = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nResults:",
+        "\\nLabels:",
+        "\\nMerged:",
+        "\\nFinal 15 genes:",
+        "\\nAvailable genes:",
+        "\\nClasses:",
+        "\\nRunning:",
+        "\\n==================="
+      ],
+      "missing": [
+        "}\n    )\n\n\n# Merge labels\n\ndata = expression.merge(\n    labels[[",
+        ")\nprint(data.shape)\n\n\n# ============================\n# Select 15 genes\n# ============================\n\ngenes = (\n    signature\n    .sort_values(\n        ",
+        ")\nprint(genes)\n\n\navailable = [\n    g for g in genes\n    if g in data.columns\n]\n\n\nprint(",
+        ")\nprint(y.value_counts())\n\n\n# ============================\n# Models\n# ============================\n\nmodels = {\n\n",
+        ",\n     LogisticRegression(\n        max_iter=2000,\n        random_state=42\n     ))\n])\n\n}\n\n\n# ============================\n# Cross validation\n# ============================\n\ncv = StratifiedKFold(\n    n_splits=10,\n    shuffle=True,\n    random_state=42\n)\n\n\nresults=[]\n\n\nfor name, model in models.items():\n\n    print(",
+        ", acc)\n\n\n    print(\n        confusion_matrix(\n            y,\n            pred\n        )\n    )\n\n\n    results.append(\n        [\n            name,\n            auc,\n            acc\n        ]\n    )\n\n\nresults_df = pd.DataFrame(\n    results,\n    columns=[\n        ",
+        "\\nResults:",
+        "\\nLabels:",
+        "\\nMerged:",
+        "\\nFinal 15 genes:",
+        "\\nAvailable genes:",
+        "\\nClasses:",
+        "\\nRunning:",
+        "\\n==================="
+      ]
+    },
+    {
+      "file": "preprocessing\\final_biomarker_ranking.py",
+      "references": [
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_DE_FDR.csv",
+        "data/string_network_edges.csv",
+        "data/final_ranked_biomarkers.csv",
+        ")\nprint(ml.head())\n\n\n# -------------------------\n# Load DE results\n# -------------------------\n\nde = pd.read_csv(\n    ",
+        "]\n    )\n\n\ncentrality = nx.degree_centrality(G)\n\n\nppi_score = pd.DataFrame(\n    {\n        ",
+        ": list(centrality.values())\n    }\n)\n\n\n# -------------------------\n# Normalize scores\n# -------------------------\n\ndef normalize(x):\n\n    return (\n        (x-x.min()) /\n        (x.max()-x.min())\n    )\n\n\nml[",
+        "\\nTOP BIOMARKERS",
+        "\\nSaved"
+      ],
+      "missing": [
+        ")\nprint(ml.head())\n\n\n# -------------------------\n# Load DE results\n# -------------------------\n\nde = pd.read_csv(\n    ",
+        "]\n    )\n\n\ncentrality = nx.degree_centrality(G)\n\n\nppi_score = pd.DataFrame(\n    {\n        ",
+        ": list(centrality.values())\n    }\n)\n\n\n# -------------------------\n# Normalize scores\n# -------------------------\n\ndef normalize(x):\n\n    return (\n        (x-x.min()) /\n        (x.max()-x.min())\n    )\n\n\nml[",
+        "\\nTOP BIOMARKERS",
+        "\\nSaved"
+      ]
+    },
+    {
+      "file": "preprocessing\\final_compare_symbols.py",
+      "references": [
+        "data/GSE99039_candidate_biomarkers.csv",
+        "data/previous_with_annotation.csv",
+        "data/final_shared_biomarkers.csv",
+        "\\nNew symbols:",
+        "\\nOverlap:",
+        "\\nShared biomarkers:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nNew symbols:",
+        "\\nOverlap:",
+        "\\nShared biomarkers:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\find_candidate_genes.py",
+      "references": [
+        "data/biomarker_genes.csv",
+        "data/differential_expression.csv",
+        "data/candidate_genes.csv",
+        "\\nCandidate Parkinson Genes:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\\nCandidate Parkinson Genes:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\find_characteristics.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt",
+        "\\nLINE NUMBER:"
+      ],
+      "missing": [
+        "\\nLINE NUMBER:"
+      ]
+    },
+    {
+      "file": "preprocessing\\find_disease_line.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt",
+        "\\nLINE:"
+      ],
+      "missing": [
+        "\\nLINE:"
+      ]
+    },
+    {
+      "file": "preprocessing\\heatmap_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "data/GSE99039_heatmap_top20.png",
+        "Dataset:",
+        "]\n\nX = data.drop(columns=[",
+        ")\nprint(top20.columns.tolist())\n\n# ===========================\n# Create heatmap dataframe\n# ===========================\n\nheatmap_data = top20.T\n\n# ===========================\n# Color labels\n# ===========================\n\ncolors = labels.map({\n    ",
+        "\n})\n\n# ===========================\n# Plot\n# ===========================\n\nplt.figure(figsize=(16,8))\n\nsns.clustermap(\n    heatmap_data,\n    cmap=",
+        "\\nTop20 genes:",
+        "\\nHeatmap saved successfully."
+      ],
+      "missing": [
+        "]\n\nX = data.drop(columns=[",
+        ")\nprint(top20.columns.tolist())\n\n# ===========================\n# Create heatmap dataframe\n# ===========================\n\nheatmap_data = top20.T\n\n# ===========================\n# Color labels\n# ===========================\n\ncolors = labels.map({\n    ",
+        "\n})\n\n# ===========================\n# Plot\n# ===========================\n\nplt.figure(figsize=(16,8))\n\nsns.clustermap(\n    heatmap_data,\n    cmap=",
+        "\\nTop20 genes:",
+        "\\nHeatmap saved successfully."
+      ]
+    },
+    {
+      "file": "preprocessing\\loader.py",
+      "references": [
+        "GSE99039_final_dataset.csv",
+        "data",
+        "GSE99039 Dataset Loaded Successfully",
+        "\n\n\ndef load_gse99039():\n    df = pd.read_csv(DATA_DIR / ",
+        "\\nClasses:",
+        "\\nFirst 10 genes:"
+      ],
+      "missing": [
+        "GSE99039_final_dataset.csv",
+        "\n\n\ndef load_gse99039():\n    df = pd.read_csv(DATA_DIR / ",
+        "\\nClasses:",
+        "\\nFirst 10 genes:"
+      ]
+    },
+    {
+      "file": "preprocessing\\map_ensembl_with_GPL570.py",
+      "references": [
+        "data/biomarker_genes.csv",
+        "data/previous_biomarkers_symbol.csv",
+        "data/GPL570.annot",
+        "\\t",
+        "\\nAnnotation:",
+        "\\nAfter mapping:",
+        "\\nMapped:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\t",
+        "\\nAnnotation:",
+        "\\nAfter mapping:",
+        "\\nMapped:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\ml_cross_validation_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset:",
+        "]\n\n\n\n# =========================\n# Models\n# =========================\n\n\nmodels = {\n\n",
+        ":\nRandomForestClassifier(\n    n_estimators=300,\n    random_state=42\n)\n\n}\n\n\n\n# =========================\n# Cross Validation\n# =========================\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\nfor name, model in models.items():\n\n    print(",
+        ")\n\n\n    results = cross_validate(\n        model,\n        X,\n        y,\n        cv=cv,\n        scoring=[\n            ",
+        ",\n        np.mean(results[",
+        "\\n================"
+      ],
+      "missing": [
+        ":\nRandomForestClassifier(\n    n_estimators=300,\n    random_state=42\n)\n\n}\n\n\n\n# =========================\n# Cross Validation\n# =========================\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\nfor name, model in models.items():\n\n    print(",
+        ",\n        np.mean(results[",
+        "\\n================"
+      ]
+    },
+    {
+      "file": "preprocessing\\ml_logistic_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset:",
+        "]\n\n# ====================================\n# Train / Test\n# ====================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\n# ====================================\n# Standardization\n# ====================================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# ====================================\n# Logistic Regression\n# ====================================\n\nmodel = LogisticRegression(\n    max_iter=5000,\n    random_state=42\n)\n\nmodel.fit(X_train, y_train)\n\n# ====================================\n# Prediction\n# ====================================\n\ny_pred = model.predict(X_test)\n\n# ====================================\n# Results\n# ====================================\n\nprint(",
+        "\\nPrecision",
+        "\\nRecall",
+        "\\nF1",
+        "\\nConfusion Matrix",
+        "\\nClassification Report"
+      ],
+      "missing": [
+        "]\n\n# ====================================\n# Train / Test\n# ====================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\n# ====================================\n# Standardization\n# ====================================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# ====================================\n# Logistic Regression\n# ====================================\n\nmodel = LogisticRegression(\n    max_iter=5000,\n    random_state=42\n)\n\nmodel.fit(X_train, y_train)\n\n# ====================================\n# Prediction\n# ====================================\n\ny_pred = model.predict(X_test)\n\n# ====================================\n# Results\n# ====================================\n\nprint(",
+        "\\nPrecision",
+        "\\nRecall",
+        "\\nF1",
+        "\\nConfusion Matrix",
+        "\\nClassification Report"
+      ]
+    },
+    {
+      "file": "preprocessing\\ml_random_forest_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset shape:",
+        "Random Forest Results",
+        "\\nFeatures:",
+        ", y.shape)\n\n# ==========================================\n# Train / Test split\n# ==========================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\nprint(",
+        "\\nTesting set:",
+        "\\n==============================",
+        "\\nConfusion Matrix:",
+        "\\nClassification Report:"
+      ],
+      "missing": [
+        "\\nFeatures:",
+        ", y.shape)\n\n# ==========================================\n# Train / Test split\n# ==========================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\nprint(",
+        "\\nTesting set:",
+        "\\n==============================",
+        "\\nConfusion Matrix:",
+        "\\nClassification Report:"
+      ]
+    },
+    {
+      "file": "preprocessing\\ml_svm_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset:",
+        ",\n    random_state=42\n)\n\nmodel.fit(X_train, y_train)\n\n# ==========================\n# Prediction\n# ==========================\n\ny_pred = model.predict(X_test)\n\n# ==========================\n# Results\n# ==========================\n\nprint(",
+        "]\n\n# ==========================\n# Train/Test\n# ==========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.2,\n    random_state=42,\n    stratify=y\n)\n\n# ==========================\n# Standardization\n# ==========================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# ==========================\n# SVM\n# ==========================\n\nmodel = SVC(\n    kernel=",
+        "\\nAccuracy",
+        "\\nPrecision",
+        "\\nRecall",
+        "\\nF1",
+        "\\nConfusion Matrix",
+        "\\nClassification Report"
+      ],
+      "missing": [
+        ",\n    random_state=42\n)\n\nmodel.fit(X_train, y_train)\n\n# ==========================\n# Prediction\n# ==========================\n\ny_pred = model.predict(X_test)\n\n# ==========================\n# Results\n# ==========================\n\nprint(",
+        "]\n\n# ==========================\n# Train/Test\n# ==========================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.2,\n    random_state=42,\n    stratify=y\n)\n\n# ==========================\n# Standardization\n# ==========================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# ==========================\n# SVM\n# ==========================\n\nmodel = SVC(\n    kernel=",
+        "\\nAccuracy",
+        "\\nPrecision",
+        "\\nRecall",
+        "\\nF1",
+        "\\nConfusion Matrix",
+        "\\nClassification Report"
+      ]
+    },
+    {
+      "file": "preprocessing\\mlp_backprop_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "Dataset:",
+        ")\nprint(df.shape)\n\n\n# =========================\n# Features / Labels\n# =========================\n\nX = df.drop(columns=[",
+        "\\nFeatures:",
+        "\\nScaling done",
+        "\\nTraining finished",
+        "\\n======================",
+        "\\nConfusion Matrix",
+        "\\nClassification Report",
+        "\\n5 Fold CV:"
+      ],
+      "missing": [
+        ")\nprint(df.shape)\n\n\n# =========================\n# Features / Labels\n# =========================\n\nX = df.drop(columns=[",
+        "\\nFeatures:",
+        "\\nScaling done",
+        "\\nTraining finished",
+        "\\n======================",
+        "\\nConfusion Matrix",
+        "\\nClassification Report",
+        "\\n5 Fold CV:"
+      ]
+    },
+    {
+      "file": "preprocessing\\model_loader.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "\n\n\ndef load_model():\n\n    model = joblib.load(\n        MODEL_DIR / ",
+        "\n    )\n\n    scaler = joblib.load(\n        MODEL_DIR / ",
+        "\n    )\n\n    with open(\n        MODEL_DIR / ",
+        "\\nGene List:"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "\n\n\ndef load_model():\n\n    model = joblib.load(\n        MODEL_DIR / ",
+        "\n    )\n\n    scaler = joblib.load(\n        MODEL_DIR / ",
+        "\n    )\n\n    with open(\n        MODEL_DIR / ",
+        "\\nGene List:"
+      ]
+    },
+    {
+      "file": "preprocessing\\network_weighted_signature.py",
+      "references": [
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_DE_FDR.csv",
+        "data/string_hub_genes.csv",
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/network_weight_results.csv",
+        "\n)\n\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nresults=[]\n\n\n\nfor name,w in weights.items():\n\n    print(",
+        "]\n        .tolist()\n    )\n\n\n    genes = [\n        g for g in genes\n        if g in data.columns\n    ]\n\n\n    print(genes)\n\n\n\n    X=data[genes]\n\n    y=data[",
+        "\n    )[:,1]\n\n\n    auc=roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc=accuracy_score(\n        y,\n        prob>=0.5\n    )\n\n\n    results.append(\n        {\n            ",
+        ".join(genes)\n        }\n    )\n\n\n\nresults=pd.DataFrame(results)\n\n\nprint(",
+        ")\nprint(results[[",
+        "]])\n\n\n\nresults.to_csv(\n    ",
+        "].min()\n) / (\n    ml[",
+        "].min()\n) / (\n    de[",
+        "].min()\n) / (\n    ppi[",
+        "\\nTesting",
+        "\\nRESULTS",
+        "\\nSaved"
+      ],
+      "missing": [
+        "\n)\n\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nresults=[]\n\n\n\nfor name,w in weights.items():\n\n    print(",
+        "]\n        .tolist()\n    )\n\n\n    genes = [\n        g for g in genes\n        if g in data.columns\n    ]\n\n\n    print(genes)\n\n\n\n    X=data[genes]\n\n    y=data[",
+        "\n    )[:,1]\n\n\n    auc=roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc=accuracy_score(\n        y,\n        prob>=0.5\n    )\n\n\n    results.append(\n        {\n            ",
+        ".join(genes)\n        }\n    )\n\n\n\nresults=pd.DataFrame(results)\n\n\nprint(",
+        "]])\n\n\n\nresults.to_csv(\n    ",
+        "].min()\n) / (\n    ml[",
+        "].min()\n) / (\n    de[",
+        "].min()\n) / (\n    ppi[",
+        "\\nTesting",
+        "\\nRESULTS",
+        "\\nSaved"
+      ]
+    },
+    {
+      "file": "preprocessing\\optimize_signature_size.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/final_ranked_biomarkers.csv",
+        "data/signature_size_optimization.csv",
+        "Dataset:",
+        "].tolist()\n\n\n\n# ==========================\n# Test sizes\n# ==========================\n\nsizes = [\n    5,\n    10,\n    15,\n    20,\n    30,\n    50,\n    100\n]\n\n\nresults = []\n\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nfor size in sizes:\n\n    genes = [\n        g for g in all_genes[:size]\n        if g in data.columns\n    ]\n\n\n    print(",
+        ")\n\n\n\n    X = data[genes]\n\n    y = data[",
+        "\n    )[:,1]\n\n\n\n    pred = (\n        prob >= 0.5\n    ).astype(int)\n\n\n\n    auc = roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc = accuracy_score(\n        y,\n        pred\n    )\n\n\n\n    results.append(\n        {\n            ",
+        ": acc\n        }\n    )\n\n\n\nresults = pd.DataFrame(results)\n\n\nresults = results.sort_values(\n    ",
+        ")\nprint(results[[\n    ",
+        ")\n\n\n\nresults.to_csv(\n    ",
+        "\\nTesting:",
+        "\\n===================",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "].tolist()\n\n\n\n# ==========================\n# Test sizes\n# ==========================\n\nsizes = [\n    5,\n    10,\n    15,\n    20,\n    30,\n    50,\n    100\n]\n\n\nresults = []\n\n\n\ncv = StratifiedKFold(\n    n_splits=5,\n    shuffle=True,\n    random_state=42\n)\n\n\n\nfor size in sizes:\n\n    genes = [\n        g for g in all_genes[:size]\n        if g in data.columns\n    ]\n\n\n    print(",
+        "\n    )[:,1]\n\n\n\n    pred = (\n        prob >= 0.5\n    ).astype(int)\n\n\n\n    auc = roc_auc_score(\n        y,\n        prob\n    )\n\n\n    acc = accuracy_score(\n        y,\n        pred\n    )\n\n\n\n    results.append(\n        {\n            ",
+        ": acc\n        }\n    )\n\n\n\nresults = pd.DataFrame(results)\n\n\nresults = results.sort_values(\n    ",
+        ")\n\n\n\nresults.to_csv(\n    ",
+        "\\nTesting:",
+        "\\n===================",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\pathway_analysis.py",
+      "references": [
+        "data/annotated_candidate_genes.csv",
+        ",\n    outdir=None,\n    cutoff=0.5\n)\n# نمایش نتایج\n\nfor library in enr.results[",
+        ")\n\n    result = enr.results[\n        enr.results[",
+        "data/pathway_results",
+        "\\nGenes:",
+        "\\n===================",
+        "\\nSaved:"
+      ],
+      "missing": [
+        ",\n    outdir=None,\n    cutoff=0.5\n)\n# نمایش نتایج\n\nfor library in enr.results[",
+        ")\n\n    result = enr.results[\n        enr.results[",
+        "\\nGenes:",
+        "\\n===================",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\pathway_enrichment_GSE99039.py",
+      "references": [
+        "data/pathway_input_biomarkers.csv",
+        "results/GO_enrichment_results.csv",
+        "results/KEGG_enrichment_results.csv",
+        ",\n    outdir=None\n)\n\ngo_result = go.results\n\n\nprint(",
+        ",\n    outdir=None\n)\nkegg_result = kegg.results\n\n\nprint(",
+        "\n        ]\n    ].head(20)\n)\n\n\n# ==========================\n# Save results\n# ==========================\n\nos.makedirs(\n    ",
+        "\\nNumber of genes:",
+        "\\nRunning GO enrichment...",
+        "\\nTop GO terms:",
+        "\\nRunning KEGG enrichment...",
+        "\\nTop KEGG pathways:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        ",\n    outdir=None\n)\n\ngo_result = go.results\n\n\nprint(",
+        ",\n    outdir=None\n)\nkegg_result = kegg.results\n\n\nprint(",
+        "\n        ]\n    ].head(20)\n)\n\n\n# ==========================\n# Save results\n# ==========================\n\nos.makedirs(\n    ",
+        "\\nNumber of genes:",
+        "\\nRunning GO enrichment...",
+        "\\nTop GO terms:",
+        "\\nRunning KEGG enrichment...",
+        "\\nTop KEGG pathways:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\pca_GSE99039.py",
+      "references": [
+        "data/GSE99039_final_dataset.csv",
+        "figure_GSE99039_PCA.png",
+        "Dataset:",
+        "\\nFeatures:",
+        "\\nStandardization done.",
+        "\\nExplained variance:",
+        "\\nFigure saved."
+      ],
+      "missing": [
+        "\\nFeatures:",
+        "\\nStandardization done.",
+        "\\nExplained variance:",
+        "\\nFigure saved."
+      ]
+    },
+    {
+      "file": "preprocessing\\predict_patient.py",
+      "references": [
+        "data/final_parkinson_logistic_model.pkl",
+        "data/final_scaler.pkl",
+        "data/final_genes.txt",
+        "\n            )\n\n\n\n# ==========================\n# DataFrame\n# ==========================\n\nX = pd.DataFrame(\n    [patient]\n)\n\n\n\n# same preprocessing\n\nX = np.log2(\n    X + 1\n)\n\n\n\n# scaling\n\nX_scaled = scaler.transform(\n    X\n)\n\n\n\n# ==========================\n# Prediction\n# ==========================\n\n\nprob = model.predict_proba(\n    X_scaled\n)[0,1]\n\n\n\nprediction = model.predict(\n    X_scaled\n)[0]\n\n\n\nprint(",
+        "\\nRequired genes:",
+        "\\nEnter gene expression values",
+        "\\n===================",
+        "Prediction: Parkinson / IPD"
+      ],
+      "missing": [
+        "\n            )\n\n\n\n# ==========================\n# DataFrame\n# ==========================\n\nX = pd.DataFrame(\n    [patient]\n)\n\n\n\n# same preprocessing\n\nX = np.log2(\n    X + 1\n)\n\n\n\n# scaling\n\nX_scaled = scaler.transform(\n    X\n)\n\n\n\n# ==========================\n# Prediction\n# ==========================\n\n\nprob = model.predict_proba(\n    X_scaled\n)[0,1]\n\n\n\nprediction = model.predict(\n    X_scaled\n)[0]\n\n\n\nprint(",
+        "\\nRequired genes:",
+        "\\nEnter gene expression values",
+        "\\n===================",
+        "Prediction: Parkinson / IPD"
+      ]
+    },
+    {
+      "file": "preprocessing\\prepare_dataset_GSE99039.py",
+      "references": [
+        "data/GSE99039_gene_expression.csv",
+        "data/GSE99039_labels.csv",
+        "data/GSE99039_final_dataset.csv",
+        "\\nFinal dataset:",
+        "\\nLabels:",
+        "\\nAfter filtering:",
+        "\\nSamples found:",
+        "\\nExpression after transpose:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\\nFinal dataset:",
+        "\\nLabels:",
+        "\\nAfter filtering:",
+        "\\nSamples found:",
+        "\\nExpression after transpose:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\prepare_previous_biomarkers.py",
+      "references": [
+        "data/annotated_candidate_genes.csv",
+        "data/previous_biomarkers_merged.csv",
+        "\\nAfter cleaning:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nAfter cleaning:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\probe_to_gene.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt",
+        "data/GSE99039_probe_gene_expression.csv",
+        "data/GPL570.annot",
+        "\\t",
+        "\\nAnnotation:",
+        "\\nColumns:",
+        "\\nAnnotation selected:",
+        "\\nMerged:",
+        "\\nAfter removing unknown genes:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\t",
+        "\\nAnnotation:",
+        "\\nColumns:",
+        "\\nAnnotation selected:",
+        "\\nMerged:",
+        "\\nAfter removing unknown genes:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\read_GSE99039_metadata.py",
+      "references": [
+        "data/GSE99039_series_matrix.txt"
+      ],
+      "missing": []
+    },
+    {
+      "file": "preprocessing\\rebuild_entrez_annotation.py",
+      "references": [
+        "data/candidate_genes.csv",
+        "data/annotated_candidate_genes.csv",
+        "data/previous_with_annotation.csv",
+        "\\nMerged:"
+      ],
+      "missing": [
+        "\\nMerged:"
+      ]
+    },
+    {
+      "file": "preprocessing\\robust_final_signature.py",
+      "references": [
+        "data/GSE99039_feature_importance.csv",
+        "data/GSE99039_DE_FDR.csv",
+        "data/string_hub_genes.csv",
+        "data/gene_stability_results.csv",
+        "data/robust_final_signature.csv",
+        "] /\n    ml[",
+        "] /\n    de[",
+        "] /\n    ppi[",
+        "] /\n    100\n)\n\n\n# merge\n\ndf = (\n    ml[[",
+        "\\nROBUST FINAL SIGNATURE\\n",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "] /\n    ml[",
+        "] /\n    de[",
+        "] /\n    ppi[",
+        "] /\n    100\n)\n\n\n# merge\n\ndf = (\n    ml[[",
+        "\\nROBUST FINAL SIGNATURE\\n",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\roc_auc_GSE99039.py",
+      "references": [
+        "data/GSE99039_top100_dataset.csv",
+        "data/GSE99039_ROC.png",
+        ": 1\n})\n\n# =====================================\n# Train Test Split\n# =====================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\n# =====================================\n# Standardization\n# =====================================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# =====================================\n# Models\n# =====================================\n\nmodels = {\n\n    ",
+        ": MLPClassifier(\n        hidden_layer_sizes=(64,32),\n        max_iter=1000,\n        random_state=42\n    )\n\n}\n\n# =====================================\n# ROC Curves\n# =====================================\n\nplt.figure(figsize=(8,7))\n\nfor name, model in models.items():\n\n    model.fit(X_train, y_train)\n\n    probs = model.predict_proba(X_test)[:,1]\n\n    fpr, tpr, _ = roc_curve(y_test, probs)\n\n    roc_auc = auc(fpr, tpr)\n\n    print(name, ",
+        "\\nROC figure saved successfully."
+      ],
+      "missing": [
+        ": 1\n})\n\n# =====================================\n# Train Test Split\n# =====================================\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.20,\n    random_state=42,\n    stratify=y\n)\n\n# =====================================\n# Standardization\n# =====================================\n\nscaler = StandardScaler()\n\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\n# =====================================\n# Models\n# =====================================\n\nmodels = {\n\n    ",
+        ": MLPClassifier(\n        hidden_layer_sizes=(64,32),\n        max_iter=1000,\n        random_state=42\n    )\n\n}\n\n# =====================================\n# ROC Curves\n# =====================================\n\nplt.figure(figsize=(8,7))\n\nfor name, model in models.items():\n\n    model.fit(X_train, y_train)\n\n    probs = model.predict_proba(X_test)[:,1]\n\n    fpr, tpr, _ = roc_curve(y_test, probs)\n\n    roc_auc = auc(fpr, tpr)\n\n    print(name, ",
+        "\\nROC figure saved successfully."
+      ]
+    },
+    {
+      "file": "preprocessing\\select_features.py",
+      "references": [
+        "data/GSE165082_PD-CC.counts.txt",
+        "data/top500_genes.csv",
+        " in col]\n\n\n# میانگین هر گروه\nPD_mean = normalized[PD_samples].mean(axis=1)\n\nCC_mean = normalized[CC_samples].mean(axis=1)\n\n\n# اختلاف بیان\ndifference = PD_mean - CC_mean\n\n\n# ساخت جدول\nfeature_table = pd.DataFrame({\n    ",
+        "\\t",
+        "\\nNumber of selected genes:",
+        "\\nSaved:"
+      ],
+      "missing": [
+        " in col]\n\n\n# میانگین هر گروه\nPD_mean = normalized[PD_samples].mean(axis=1)\n\nCC_mean = normalized[CC_samples].mean(axis=1)\n\n\n# اختلاف بیان\ndifference = PD_mean - CC_mean\n\n\n# ساخت جدول\nfeature_table = pd.DataFrame({\n    ",
+        "\\t",
+        "\\nNumber of selected genes:",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\select_top_genes_GSE99039.py",
+      "references": [
+        "differential_expression_GSE99039_FDR.csv",
+        "top100_genes_GSE99039.csv",
+        "top300_genes_GSE99039.csv",
+        "top500_genes_GSE99039.csv",
+        "\\nSaved successfully."
+      ],
+      "missing": [
+        "\\nSaved successfully."
+      ]
+    },
+    {
+      "file": "preprocessing\\stability_analysis.py",
+      "references": [
+        "data/pathway_input_biomarkers.csv",
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/gene_stability_results.csv",
+        "\\nDataset:",
+        ")\nprint(len(genes_available))\n\n\n\n# ==========================\n# Stability\n# ==========================\n\n\niterations = 100\n\n\nselection_count = {\n    gene:0\n    for gene in genes_available\n}\n\n\n\nsss = StratifiedShuffleSplit(\n    n_splits=iterations,\n    test_size=0.2,\n    random_state=42\n)\n\n\n\nfor i,(train_idx,test_idx) in enumerate(\n    sss.split(\n        data,\n        data[",
+        "]\n    )\n):\n\n    train = data.iloc[train_idx]\n\n\n    scores = {}\n\n\n    for gene in genes_available:\n\n        corr = abs(\n            train[[gene,",
+        ",\n            iterations\n        )\n\n\n\n# ==========================\n# Results\n# ==========================\n\n\nresult = pd.DataFrame(\n    {\n        ",
+        "STABILITY RESULTS",
+        "\\nAvailable candidate genes:",
+        "]\n    /\n    iterations\n    *\n    100\n)\n\n\nresult = result.sort_values(\n    ",
+        "\\n====================",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "\\nDataset:",
+        ")\nprint(len(genes_available))\n\n\n\n# ==========================\n# Stability\n# ==========================\n\n\niterations = 100\n\n\nselection_count = {\n    gene:0\n    for gene in genes_available\n}\n\n\n\nsss = StratifiedShuffleSplit(\n    n_splits=iterations,\n    test_size=0.2,\n    random_state=42\n)\n\n\n\nfor i,(train_idx,test_idx) in enumerate(\n    sss.split(\n        data,\n        data[",
+        "]\n    )\n):\n\n    train = data.iloc[train_idx]\n\n\n    scores = {}\n\n\n    for gene in genes_available:\n\n        corr = abs(\n            train[[gene,",
+        ",\n            iterations\n        )\n\n\n\n# ==========================\n# Results\n# ==========================\n\n\nresult = pd.DataFrame(\n    {\n        ",
+        "\\nAvailable candidate genes:",
+        "]\n    /\n    iterations\n    *\n    100\n)\n\n\nresult = result.sort_values(\n    ",
+        "\\n====================",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\string_ppi_analysis.py",
+      "references": [
+        "data/pathway_input_biomarkers.csv",
+        "data/string_network_edges.csv",
+        "data/string_hub_genes.csv",
+        "data/string_network.png",
+        "\\nQuerying STRING database...",
+        ", G.number_of_edges())\n\n\n# ==========================\n# Hub genes\n# ==========================\n\ndegree = nx.degree_centrality(G)\n\n\nhub = (\n    pd.DataFrame(\n        degree.items(),\n        columns=[",
+        "https://string-db.org/api/tsv/network",
+        "\\t",
+        "\\nSTRING interactions:",
+        "\\nNetwork:",
+        "\\nTop hub genes:",
+        "\\nSaved successfully"
+      ],
+      "missing": [
+        "\\nQuerying STRING database...",
+        ", G.number_of_edges())\n\n\n# ==========================\n# Hub genes\n# ==========================\n\ndegree = nx.degree_centrality(G)\n\n\nhub = (\n    pd.DataFrame(\n        degree.items(),\n        columns=[",
+        "https://string-db.org/api/tsv/network",
+        "\\t",
+        "\\nSTRING interactions:",
+        "\\nNetwork:",
+        "\\nTop hub genes:",
+        "\\nSaved successfully"
+      ]
+    },
+    {
+      "file": "preprocessing\\train_final_model.py",
+      "references": [
+        "data/final_genes.txt",
+        "data/GSE99039_final_dataset.csv",
+        "data/GSE99039_labels.csv",
+        "data/final_parkinson_logistic_model.pkl",
+        "data/final_scaler.pkl",
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        ")\n\n\n\n# =========================\n# Load training data\n# =========================\n\n\nexpression = pd.read_csv(\n    ",
+        "\n        },\n        inplace=True\n    )\n\n\n\ndata = expression.merge(\n    labels,\n    on=",
+        "Dataset:",
+        "\\n",
+        "\\nSaved:"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        ")\n\n\n\n# =========================\n# Load training data\n# =========================\n\n\nexpression = pd.read_csv(\n    ",
+        "\n        },\n        inplace=True\n    )\n\n\n\ndata = expression.merge(\n    labels,\n    on=",
+        "\\n",
+        "\\nSaved:"
+      ]
+    },
+    {
+      "file": "preprocessing\\update_biomarker_symbols.py",
+      "references": [
+        "data/biomarker_genes.csv",
+        "data/annotated_candidate_genes.csv",
+        "data/biomarker_genes_symbol.csv",
+        "Saved: data/biomarker_genes_symbol.csv"
+      ],
+      "missing": [
+        "Saved: data/biomarker_genes_symbol.csv"
+      ]
+    },
+    {
+      "file": "preprocessing\\validate_GSE49036.py",
+      "references": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        "data/GSE49036_series_matrix.txt",
+        ")\n\n\ndata = pd.read_csv(\n    ",
+        "\\nLoading GSE49036...",
+        "\\t"
+      ],
+      "missing": [
+        "final_parkinson_logistic_model.pkl",
+        "final_scaler.pkl",
+        "final_genes.txt",
+        ")\n\n\ndata = pd.read_csv(\n    ",
+        "\\nLoading GSE49036...",
+        "\\t"
+      ]
+    },
+    {
+      "file": "preprocessing\\volcano_GSE99039.py",
+      "references": [
+        "differential_expression_GSE99039_FDR.csv",
+        "figure_GSE99039_volcano.png",
+        "\\nFigure saved successfully."
+      ],
+      "missing": [
+        "\\nFigure saved successfully."
+      ]
+    },
+    {
+      "file": "report_generator.py",
+      "references": [
+        "]\n        )\n    )\n\n\n    content.append(\n        Spacer(1,20)\n    )\n\n\n    # Patient + AI result\n\n    data = [\n\n        [",
+        "Input Data",
+        "\n        ]\n\n    ]\n\n\n    table = Table(data)\n\n\n    table.setStyle(\n        TableStyle([\n\n            (\n                ",
+        "\n            Generated by Parkinson AI Predictor<br/>\n            Biomedical Artificial Intelligence System<br/><br/>\n\n            This software is developed for research and\n            clinical decision-support purposes.\n            "
+      ],
+      "missing": [
+        "]\n        )\n    )\n\n\n    content.append(\n        Spacer(1,20)\n    )\n\n\n    # Patient + AI result\n\n    data = [\n\n        [",
+        "\n        ]\n\n    ]\n\n\n    table = Table(data)\n\n\n    table.setStyle(\n        TableStyle([\n\n            (\n                ",
+        "\n            Generated by Parkinson AI Predictor<br/>\n            Biomedical Artificial Intelligence System<br/><br/>\n\n            This software is developed for research and\n            clinical decision-support purposes.\n            "
+      ]
+    },
+    {
+      "file": "test_external_normalization.py",
+      "references": [
+        "data/GSE165082_gene_symbol.csv",
+        "\\n================"
+      ],
+      "missing": [
+        "\\n================"
+      ]
+    }
+  ],
+  "model_files": [
+    "data\\annotated_candidate_genes.csv",
+    "data\\biomarker_genes.csv",
+    "data\\biomarker_genes_symbol.csv",
+    "data\\candidate_genes.csv",
+    "data\\evaluated_signature_genes.csv",
+    "data\\figure2_model_comparison.png",
+    "data\\final15_model_results.csv",
+    "data\\final_15gene_model.pkl",
+    "data\\final_genes.txt",
+    "data\\final_parkinson_logistic_model.pkl",
+    "data\\final_scaler.pkl",
+    "data\\model_comparison_results.csv",
+    "data\\string_hub_genes.csv",
+    "data\\top500_genes.csv",
+    "model\\check_genes.py",
+    "model\\check_model.py",
+    "model\\check_scaler.py",
+    "model\\final_genes.txt",
+    "model\\final_parkinson_logistic_model.pkl",
+    "model\\final_scaler.pkl",
+    "model\\test_model.py",
+    "models\\final_genes.txt",
+    "models\\final_leakage_free_pipeline.pkl",
+    "models\\final_parkinson_logistic_model.pkl",
+    "models\\final_scaler.pkl",
+    "models\\final_selected_500_genes.txt",
+    "models\\leakage_free_genes.txt",
+    "models\\leakage_free_logistic_model.pkl",
+    "models\\leakage_free_pipeline.pkl",
+    "models\\logistic_regression_500genes.py",
+    "models\\model_metadata.pkl",
+    "models\\xgboost_model.py",
+    "preprocessing\\annotate_genes.py",
+    "preprocessing\\compare_ml_models.py",
+    "preprocessing\\evaluate_all_models.py",
+    "preprocessing\\evaluate_GSE165082_models.py",
+    "preprocessing\\figure2_model_comparison.py",
+    "preprocessing\\final_15gene_model.py",
+    "preprocessing\\find_candidate_genes.py",
+    "preprocessing\\model_loader.py",
+    "preprocessing\\select_top_genes_GSE99039.py",
+    "preprocessing\\train_final_model.py",
+    "results\\GSE165082_model_comparison.csv",
+    "results\\model_comparison_final.csv",
+    "top100_genes_GSE99039.csv",
+    "top300_genes_GSE99039.csv",
+    "top500_genes_GSE99039.csv"
+  ]
+}

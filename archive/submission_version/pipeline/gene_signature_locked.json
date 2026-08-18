@@ -1,0 +1,20 @@
+{
+  "version": "v1_2026-08-09",
+  "note": "این تنها لیست ژن معتبر برای مدل نهایی است. اگر تصمیم گرفتید DGKK اضافه/حذف شود، این فایل را ویرایش کنید و سپس train_final_model.py و external_validation.py را دوباره اجرا کنید تا همه‌جا هماهنگ بماند.",
+  "genes": [
+    "PTGDS",
+    "KIR2DL1",
+    "KIR2DL3",
+    "LILRB1",
+    "KIAA0319L",
+    "PPP4C",
+    "TYROBP",
+    "MBOAT7",
+    "MMP9",
+    "HLA-C",
+    "LRRC25",
+    "KIR3DL1",
+    "BCL2",
+    "RHOG"
+  ]
+}

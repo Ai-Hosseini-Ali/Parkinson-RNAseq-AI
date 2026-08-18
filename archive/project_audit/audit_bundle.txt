@@ -1,0 +1,3452 @@
+
+
+===== FILE: preprocessing\prepare_dataset_GSE99039.py =====
+
+import pandas as pd
+
+# ==========================
+# Load Gene Expression
+# ==========================
+
+expr = pd.read_csv(
+    "data/GSE99039_gene_expression.csv",
+    index_col=0
+)
+
+print("Expression:")
+print(expr.shape)
+
+# ==========================
+# Load Labels
+# ==========================
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+print("\nLabels:")
+print(labels.shape)
+
+print(labels.head())
+
+# ==========================
+# Keep only CONTROL/IPD
+# ==========================
+
+labels = labels[
+    labels["Disease"].isin(["CONTROL", "IPD"])
+]
+
+print("\nAfter filtering:")
+print(labels["Disease"].value_counts())
+
+# ==========================
+# Keep only existing samples
+# ==========================
+
+samples = labels["Sample"].tolist()
+
+samples = [s for s in samples if s in expr.columns]
+
+print("\nSamples found:", len(samples))
+
+# ==========================
+# Reorder expression columns
+# ==========================
+
+expr = expr[samples]
+
+# transpose
+
+expr = expr.T
+
+print("\nExpression after transpose:")
+print(expr.shape)
+
+# ==========================
+# Add labels
+# ==========================
+
+expr["Disease"] = labels.set_index("Sample").loc[expr.index]["Disease"]
+
+print("\nFinal dataset:")
+print(expr.shape)
+
+print(expr["Disease"].value_counts())
+
+# ==========================
+# Save
+# ==========================
+
+expr.to_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+print("\nSaved:")
+print("data/GSE99039_final_dataset.csv")
+
+
+===== FILE: preprocessing\normalization.py =====
+
+
+
+===== FILE: preprocessing\select_top_genes_GSE99039.py =====
+
+import pandas as pd
+
+# ==========================
+# Load differential expression with FDR
+# ==========================
+
+df = pd.read_csv(
+    "differential_expression_GSE99039_FDR.csv"
+)
+
+print("Original:")
+print(df.shape)
+
+# ==========================
+# Keep only significant genes
+# ==========================
+
+df = df[df["FDR"] < 0.05]
+
+print("After FDR filtering:")
+print(df.shape)
+
+# ==========================
+# Sort by FDR
+# ==========================
+
+df = df.sort_values("FDR")
+
+# ==========================
+# Save Top100
+# ==========================
+
+top100 = df.head(100)
+
+top100.to_csv(
+    "top100_genes_GSE99039.csv",
+    index=False
+)
+
+# ==========================
+# Save Top300
+# ==========================
+
+top300 = df.head(300)
+
+top300.to_csv(
+    "top300_genes_GSE99039.csv",
+    index=False
+)
+
+# ==========================
+# Save Top500
+# ==========================
+
+top500 = df.head(500)
+
+top500.to_csv(
+    "top500_genes_GSE99039.csv",
+    index=False
+)
+
+print()
+
+print("Top100:", len(top100))
+print("Top300:", len(top300))
+print("Top500:", len(top500))
+
+print()
+
+print("Top 10 genes:")
+
+print(top100[["Gene","LogFC","FDR"]].head(10))
+
+print("\nSaved successfully.")
+
+
+===== FILE: preprocessing\select_features.py =====
+
+import pandas as pd
+import numpy as np
+
+
+# خواندن داده
+df = pd.read_csv(
+    "data/GSE165082_PD-CC.counts.txt",
+    sep="\t"
+)
+
+
+# جدا کردن ژن‌ها
+genes = df["Geneid"]
+
+counts = df.drop("Geneid", axis=1)
+
+
+# Filtering
+filtered = counts[counts.sum(axis=1) >= 10]
+
+
+# Normalization
+normalized = np.log2(filtered + 1)
+
+
+# گروه‌ها
+PD_samples = [col for col in normalized.columns if "PD" in col]
+CC_samples = [col for col in normalized.columns if "CC" in col]
+
+
+# میانگین هر گروه
+PD_mean = normalized[PD_samples].mean(axis=1)
+
+CC_mean = normalized[CC_samples].mean(axis=1)
+
+
+# اختلاف بیان
+difference = PD_mean - CC_mean
+
+
+# ساخت جدول
+feature_table = pd.DataFrame({
+    "Gene": genes[filtered.index],
+    "PD_mean": PD_mean,
+    "CC_mean": CC_mean,
+    "Difference": difference
+})
+
+
+# مرتب کردن
+feature_table = feature_table.sort_values(
+    by="Difference",
+    key=abs,
+    ascending=False
+)
+
+
+# انتخاب 500 ژن برتر
+top_genes = feature_table.head(500)
+
+
+print("Top genes:")
+print(top_genes.head(20))
+
+
+print("\nNumber of selected genes:")
+print(top_genes.shape)# انتخاب 500 ژن برتر
+top_genes = feature_table.head(500)
+
+
+print("Top genes:")
+print(top_genes.head(20))
+
+
+print("\nNumber of selected genes:")
+print(top_genes.shape)
+
+
+# ذخیره خروجی برای مدل
+top_genes.to_csv(
+    "data/top500_genes.csv",
+    index=False
+)
+
+
+print("\nSaved:")
+print("data/top500_genes.csv")
+
+
+===== FILE: preprocessing\feature_selection.py =====
+
+import pandas as pd
+import numpy as np
+
+# خواندن داده
+df = pd.read_csv(
+    "data/GSE165082_PD-CC.counts.txt",
+    sep="\t"
+)
+
+# جدا کردن Gene ID
+genes = df["Geneid"]
+
+# فقط داده‌های شمارشی
+counts = df.drop("Geneid", axis=1)
+
+# حذف ژن‌های کم‌بیان
+filtered = counts[counts.sum(axis=1) >= 10]
+
+# Log normalization
+normalized = np.log2(filtered + 1)
+
+# Transpose
+X = normalized.T
+
+# نام ستون‌ها = نام ژن‌ها
+X.columns = genes[filtered.index]
+
+print("Shape after transpose:")
+print(X.shape)
+
+print("\nFirst rows:")
+print(X.head())
+# ساخت Label ها
+y = []
+
+for sample in X.index:
+    if "PD" in sample:
+        y.append(1)
+    else:
+        y.append(0)
+
+# تبدیل به Series
+y = pd.Series(y, index=X.index, name="Label")
+
+print("\nLabels:")
+print(y)
+
+print("\nNumber of samples in each class:")
+print(y.value_counts())
+
+
+===== FILE: preprocessing\optimize_signature_size.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
+from sklearn.svm import SVC
+
+from sklearn.metrics import roc_auc_score, accuracy_score
+
+
+# ==========================
+# Load expression
+# ==========================
+
+expression = pd.read_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+expression = expression.rename(
+    columns={
+        "Unnamed: 0": "Sample"
+    }
+)
+
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+
+data = expression.merge(
+    labels[["Sample","Label"]],
+    on="Sample"
+)
+
+
+print("Dataset:")
+print(data.shape)
+
+
+
+# ==========================
+# Ranked genes
+# ==========================
+
+ranked = pd.read_csv(
+    "data/final_ranked_biomarkers.csv"
+)
+
+
+all_genes = ranked["Gene"].tolist()
+
+
+
+# ==========================
+# Test sizes
+# ==========================
+
+sizes = [
+    5,
+    10,
+    15,
+    20,
+    30,
+    50,
+    100
+]
+
+
+results = []
+
+
+
+cv = StratifiedKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=42
+)
+
+
+
+for size in sizes:
+
+    genes = [
+        g for g in all_genes[:size]
+        if g in data.columns
+    ]
+
+
+    print("\nTesting:")
+    print(size, "genes")
+
+
+
+    X = data[genes]
+
+    y = data["Label"]
+
+
+
+    scaler = StandardScaler()
+
+    X = scaler.fit_transform(X)
+
+
+
+    model = SVC(
+        kernel="rbf",
+        probability=True,
+        random_state=42
+    )
+
+
+
+    prob = cross_val_predict(
+        model,
+        X,
+        y,
+        cv=cv,
+        method="predict_proba"
+    )[:,1]
+
+
+
+    pred = (
+        prob >= 0.5
+    ).astype(int)
+
+
+
+    auc = roc_auc_score(
+        y,
+        prob
+    )
+
+
+    acc = accuracy_score(
+        y,
+        pred
+    )
+
+
+
+    results.append(
+        {
+            "Gene_Number": size,
+            "Genes": ",".join(genes),
+            "AUC": auc,
+            "Accuracy": acc
+        }
+    )
+
+
+
+results = pd.DataFrame(results)
+
+
+results = results.sort_values(
+    "AUC",
+    ascending=False
+)
+
+
+print("\n===================")
+print(results[[
+    "Gene_Number",
+    "AUC",
+    "Accuracy"
+]])
+print("===================")
+
+
+
+results.to_csv(
+    "data/signature_size_optimization.csv",
+    index=False
+)
+
+
+print("\nSaved:")
+print(
+    "data/signature_size_optimization.csv"
+)
+
+
+
+===== FILE: preprocessing\robust_final_signature.py =====
+
+import pandas as pd
+
+# load files
+
+ml = pd.read_csv(
+    "data/GSE99039_feature_importance.csv"
+)
+
+de = pd.read_csv(
+    "data/GSE99039_DE_FDR.csv"
+)
+
+ppi = pd.read_csv(
+    "data/string_hub_genes.csv"
+)
+
+stab = pd.read_csv(
+    "data/gene_stability_results.csv"
+)
+
+
+# normalize scores
+
+ml["ML_score"] = (
+    ml["Importance"] /
+    ml["Importance"].max()
+)
+import numpy as np
+
+de["DE_score"] = (
+    -np.log10(de["FDR"])
+)
+
+de["DE_score"] = (
+    de["DE_score"] /
+    de["DE_score"].max()
+)
+
+ppi["PPI_score"] = (
+    ppi["Degree"] /
+    ppi["Degree"].max()
+)
+
+
+stab["Stability_score"] = (
+    stab["Stability_%"] /
+    100
+)
+
+
+# merge
+
+df = (
+    ml[["Gene","ML_score"]]
+    .merge(
+        de[["Gene","DE_score"]],
+        on="Gene",
+        how="inner"
+    )
+    .merge(
+        ppi[["Gene","PPI_score"]],
+        on="Gene",
+        how="left"
+    )
+    .merge(
+        stab[["Gene","Stability_score"]],
+        on="Gene",
+        how="left"
+    )
+)
+
+
+df = df.fillna(0)
+
+
+# final score
+
+df["Robust_score"] = (
+    0.25*df["ML_score"]
+    +
+    0.25*df["DE_score"]
+    +
+    0.25*df["PPI_score"]
+    +
+    0.25*df["Stability_score"]
+)
+
+
+df = df.sort_values(
+    "Robust_score",
+    ascending=False
+)
+
+
+print("\nROBUST FINAL SIGNATURE\n")
+
+print(
+    df.head(20)
+)
+
+
+df.head(50).to_csv(
+    "data/robust_final_signature.csv",
+    index=False
+)
+
+
+print("\nSaved:")
+print(
+    "data/robust_final_signature.csv"
+)
+
+
+===== FILE: preprocessing\final_15gene_model.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score,
+    confusion_matrix,
+    classification_report,
+    roc_curve
+)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import joblib
+
+
+# ============================
+# Paths
+# ============================
+
+expression_file = "data/GSE99039_final_dataset.csv"
+labels_file = "data/GSE99039_labels.csv"
+signature_file = "data/robust_final_signature.csv"
+
+
+# ============================
+# Load data
+# ============================
+
+expression = pd.read_csv(expression_file)
+labels = pd.read_csv(labels_file)
+signature = pd.read_csv(signature_file)
+
+
+print("Expression:")
+print(expression.shape)
+
+print("\nLabels:")
+print(labels.head())
+
+
+# ============================
+# Fix sample column
+# ============================
+
+if "Sample" not in expression.columns:
+    expression = expression.rename(
+        columns={expression.columns[0]: "Sample"}
+    )
+
+
+# Merge labels
+
+data = expression.merge(
+    labels[["Sample", "Label"]],
+    on="Sample"
+)
+
+
+print("\nMerged:")
+print(data.shape)
+
+
+# ============================
+# Select 15 genes
+# ============================
+
+genes = (
+    signature
+    .sort_values(
+        "Robust_score",
+        ascending=False
+    )
+    .head(15)["Gene"]
+    .tolist()
+)
+
+
+print("\nFinal 15 genes:")
+print(genes)
+
+
+available = [
+    g for g in genes
+    if g in data.columns
+]
+
+
+print("\nAvailable genes:")
+print(available)
+
+
+
+X = data[available]
+
+y = data["Label"]
+
+
+print("\nClasses:")
+print(y.value_counts())
+
+
+# ============================
+# Models
+# ============================
+
+models = {
+
+"SVM":
+Pipeline([
+    ("scale", StandardScaler()),
+    ("model",
+     SVC(
+        kernel="linear",
+        probability=True,
+        random_state=42
+     ))
+]),
+
+
+"Logistic":
+Pipeline([
+    ("scale", StandardScaler()),
+    ("model",
+     LogisticRegression(
+        max_iter=2000,
+        random_state=42
+     ))
+])
+
+}
+
+
+# ============================
+# Cross validation
+# ============================
+
+cv = StratifiedKFold(
+    n_splits=10,
+    shuffle=True,
+    random_state=42
+)
+
+
+results=[]
+
+
+for name, model in models.items():
+
+    print("\nRunning:", name)
+
+    pred_prob = cross_val_predict(
+        model,
+        X,
+        y,
+        cv=cv,
+        method="predict_proba"
+    )[:,1]
+
+
+    pred = (
+        pred_prob >= 0.5
+    ).astype(int)
+
+
+    auc = roc_auc_score(
+        y,
+        pred_prob
+    )
+
+
+    acc = accuracy_score(
+        y,
+        pred
+    )
+
+
+    print("AUC:", auc)
+    print("Accuracy:", acc)
+
+
+    print(
+        confusion_matrix(
+            y,
+            pred
+        )
+    )
+
+
+    results.append(
+        [
+            name,
+            auc,
+            acc
+        ]
+    )
+
+
+results_df = pd.DataFrame(
+    results,
+    columns=[
+        "Model",
+        "AUC",
+        "Accuracy"
+    ]
+)
+
+
+print("\nResults:")
+print(results_df)
+
+
+results_df.to_csv(
+    "data/final15_model_results.csv",
+    index=False
+)
+
+
+# ============================
+# Train final SVM
+# ============================
+
+final_model = models["SVM"]
+
+
+final_model.fit(
+    X,
+    y
+)
+
+
+joblib.dump(
+    final_model,
+    "data/final_15gene_model.pkl"
+)
+
+
+# ============================
+# ROC curve
+# ============================
+
+prob = cross_val_predict(
+    final_model,
+    X,
+    y,
+    cv=cv,
+    method="predict_proba"
+)[:,1]
+
+
+fpr,tpr,_ = roc_curve(
+    y,
+    prob
+)
+
+
+plt.figure(figsize=(6,5))
+
+plt.plot(
+    fpr,
+    tpr
+)
+
+plt.xlabel(
+    "False Positive Rate"
+)
+
+plt.ylabel(
+    "True Positive Rate"
+)
+
+plt.title(
+    "ROC - Final 15 Gene Signature"
+)
+
+plt.savefig(
+    "ROC_final15.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+
+
+# ============================
+# Confusion Matrix
+# ============================
+
+pred = (
+    prob>=0.5
+).astype(int)
+
+
+cm = confusion_matrix(
+    y,
+    pred
+)
+
+
+plt.figure(figsize=(5,4))
+
+sns.heatmap(
+    cm,
+    annot=True,
+    fmt="d"
+)
+
+plt.xlabel(
+    "Predicted"
+)
+
+plt.ylabel(
+    "Actual"
+)
+
+plt.title(
+    "Confusion Matrix"
+)
+
+plt.savefig(
+    "confusion_matrix_final15.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()
+
+
+
+print("\n===================")
+print("FINISHED")
+print("===================")
+
+print("Saved:")
+print("data/final_15gene_model.pkl")
+print("data/final15_model_results.csv")
+print("ROC_final15.png")
+print("confusion_matrix_final15.png")
+
+
+===== FILE: preprocessing\train_final_model.py =====
+
+import pandas as pd
+import numpy as np
+import joblib
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score
+)
+
+
+print("==============================")
+print("TRAIN FINAL PARKINSON MODEL")
+print("==============================")
+
+
+# =========================
+# Final genes
+# =========================
+
+genes = [
+    'PTGDS',
+    'KIR2DL1',
+    'KIR2DL3',
+    'LILRB1',
+    'KIAA0319L',
+    'PPP4C',
+    'TYROBP',
+    'MBOAT7',
+    'MMP9',
+    'HLA-C',
+    'LRRC25',
+    'KIR3DL1',
+    'BCL2',
+    'RHOG'
+]
+
+
+# save genes
+
+with open(
+    "data/final_genes.txt",
+    "w"
+) as f:
+
+    for g in genes:
+        f.write(g+"\n")
+
+
+
+# =========================
+# Load training data
+# =========================
+
+
+expression = pd.read_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+
+
+if "Sample" not in expression.columns:
+
+    expression.rename(
+        columns={
+            "Unnamed: 0":"Sample"
+        },
+        inplace=True
+    )
+
+
+
+data = expression.merge(
+    labels,
+    on="Sample"
+)
+
+
+
+print(
+"Dataset:",
+data.shape
+)
+
+
+
+X=data[genes]
+
+y=data["Label"]
+
+
+
+# =========================
+# log transform
+# =========================
+
+X=np.log2(
+    X+1
+)
+
+
+
+# =========================
+# Scaling
+# =========================
+
+scaler=StandardScaler()
+
+
+X_scaled=scaler.fit_transform(
+    X
+)
+
+
+
+# =========================
+# Train Logistic
+# =========================
+
+
+model=LogisticRegression(
+    max_iter=5000,
+    random_state=42
+)
+
+
+model.fit(
+    X_scaled,
+    y
+)
+
+
+
+# training evaluation
+
+prob=model.predict_proba(
+    X_scaled
+)[:,1]
+
+
+pred=model.predict(
+    X_scaled
+)
+
+
+
+print(
+"Training AUC:",
+roc_auc_score(
+    y,
+    prob
+)
+)
+
+
+print(
+"Accuracy:",
+accuracy_score(
+    y,
+    pred
+)
+)
+
+
+
+# =========================
+# Save model
+# =========================
+
+
+joblib.dump(
+    model,
+    "data/final_parkinson_logistic_model.pkl"
+)
+
+
+joblib.dump(
+    scaler,
+    "data/final_scaler.pkl"
+)
+
+
+
+print("\nSaved:")
+print(
+"final_parkinson_logistic_model.pkl"
+)
+
+print(
+"final_scaler.pkl"
+)
+
+print(
+"final_genes.txt"
+)
+
+
+===== FILE: preprocessing\cross_validation_signature.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score,
+    confusion_matrix,
+    classification_report
+)
+
+
+# ==========================
+# Load expression
+# ==========================
+
+data = pd.read_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+
+# Fix sample column
+
+data = data.rename(
+    columns={
+        "Unnamed: 0": "Sample"
+    }
+)
+
+
+# ==========================
+# Load labels
+# ==========================
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+
+data = data.merge(
+    labels[["Sample","Label"]],
+    on="Sample"
+)
+
+
+print("Dataset:")
+print(data.shape)
+
+
+
+# ==========================
+# Load biomarkers
+# ==========================
+
+biomarkers = pd.read_csv(
+    "data/final_ranked_biomarkers.csv"
+)
+
+
+genes = biomarkers.head(20)["Gene"].tolist()
+
+
+
+genes = [
+    g for g in genes
+    if g in data.columns
+]
+
+
+print("\nGenes used:")
+print(genes)
+
+
+
+# ==========================
+# X y
+# ==========================
+
+X = data[genes]
+
+y = data["Label"]
+
+
+
+# Scaling
+
+scaler = StandardScaler()
+
+X_scaled = scaler.fit_transform(X)
+
+
+
+# ==========================
+# Model
+# ==========================
+
+model = RandomForestClassifier(
+    n_estimators=500,
+    random_state=42
+)
+
+
+
+# ==========================
+# 5 Fold CV
+# ==========================
+
+cv = StratifiedKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=42
+)
+
+
+
+prob = cross_val_predict(
+    model,
+    X_scaled,
+    y,
+    cv=cv,
+    method="predict_proba"
+)[:,1]
+
+
+
+pred = (
+    prob >= 0.5
+).astype(int)
+
+
+
+# ==========================
+# Results
+# ==========================
+
+auc = roc_auc_score(
+    y,
+    prob
+)
+
+
+accuracy = accuracy_score(
+    y,
+    pred
+)
+
+
+
+print("\n===================")
+print("Cross Validation Results")
+print("===================")
+
+print(
+    "AUC:",
+    round(auc,4)
+)
+
+print(
+    "Accuracy:",
+    round(accuracy,4)
+)
+
+
+
+print("\nConfusion Matrix:")
+
+print(
+    confusion_matrix(
+        y,
+        pred
+    )
+)
+
+
+
+print("\nClassification Report:")
+
+print(
+    classification_report(
+        y,
+        pred
+    )
+)
+
+
+
+# Save predictions
+
+out = pd.DataFrame({
+
+    "Sample": data["Sample"],
+
+    "True_Label": y,
+
+    "Prediction": pred,
+
+    "Probability": prob
+
+})
+
+
+out.to_csv(
+    "data/cv_predictions.csv",
+    index=False
+)
+
+
+print("\nSaved:")
+print("data/cv_predictions.csv")
+
+
+===== FILE: preprocessing\ml_cross_validation_GSE99039.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import StratifiedKFold, cross_validate
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+
+
+# =========================
+# Load dataset
+# =========================
+
+df = pd.read_csv(
+    "data/GSE99039_top100_dataset.csv"
+)
+
+
+print("Dataset:")
+print(df.shape)
+
+
+X = df.drop(columns=["Disease"])
+y = df["Disease"]
+
+
+
+# =========================
+# Models
+# =========================
+
+
+models = {
+
+"SVM":
+Pipeline([
+    ("scale", StandardScaler()),
+    ("model", SVC(kernel="rbf"))
+]),
+
+
+"Logistic Regression":
+Pipeline([
+    ("scale", StandardScaler()),
+    ("model", LogisticRegression(max_iter=2000))
+]),
+
+
+"Random Forest":
+RandomForestClassifier(
+    n_estimators=300,
+    random_state=42
+)
+
+}
+
+
+
+# =========================
+# Cross Validation
+# =========================
+
+
+cv = StratifiedKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=42
+)
+
+
+for name, model in models.items():
+
+    print("\n================")
+    print(name)
+    print("================")
+
+
+    results = cross_validate(
+        model,
+        X,
+        y,
+        cv=cv,
+        scoring=[
+            "accuracy",
+            "precision_weighted",
+            "recall_weighted",
+            "f1_weighted"
+        ]
+    )
+
+
+    print(
+        "Accuracy:",
+        np.mean(results["test_accuracy"])
+    )
+
+    print(
+        "Precision:",
+        np.mean(results["test_precision_weighted"])
+    )
+
+    print(
+        "Recall:",
+        np.mean(results["test_recall_weighted"])
+    )
+
+    print(
+        "F1:",
+        np.mean(results["test_f1_weighted"])
+    )
+
+
+===== FILE: preprocessing\annotate_GSE165082.py =====
+
+import pandas as pd
+import mygene
+
+print("Loading counts...")
+
+df = pd.read_csv(
+    "data/GSE165082_PD-CC.counts.txt",
+    sep="\t",
+    index_col=0
+)
+
+print(df.shape)
+
+genes = df.index.tolist()
+
+print("Mapping genes...")
+
+
+mg = mygene.MyGeneInfo()
+
+result = mg.querymany(
+    genes,
+    scopes="ensembl.gene",
+    fields="symbol",
+    species="human"
+)
+
+
+mapping = {}
+
+for r in result:
+    if "symbol" in r:
+        mapping[r["query"]] = r["symbol"]
+
+
+print(
+    "Mapped:",
+    len(mapping)
+)
+
+
+df["GeneSymbol"] = [
+    mapping.get(x, None)
+    for x in df.index
+]
+
+
+df = df.dropna(
+    subset=["GeneSymbol"]
+)
+
+
+df = df.set_index(
+    "GeneSymbol"
+)
+
+
+# حذف ژن های تکراری
+df = df.groupby(
+    df.index
+).sum()
+
+
+print(df.shape)
+
+
+df.to_csv(
+    "data/GSE165082_gene_symbol.csv"
+)
+
+
+print("Saved")
+
+
+===== FILE: preprocessing\batch_correct_external_validation.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score,
+    confusion_matrix,
+    classification_report
+)
+
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+
+print("================================")
+print("External Validation Batch Correction")
+print("================================")
+
+
+# ===============================
+# Final signature genes
+# ===============================
+
+genes = [
+    'PTGDS',
+    'KIR2DL1',
+    'KIR2DL3',
+    'LILRB1',
+    'KIAA0319L',
+    'PPP4C',
+    'TYROBP',
+    'MBOAT7',
+    'MMP9',
+    'HLA-C',
+    'LRRC25',
+    'KIR3DL1',
+    'BCL2',
+    'RHOG'
+]
+
+
+# ===============================
+# Load GSE99039
+# ===============================
+
+print("\nLoading GSE99039...")
+
+
+train = pd.read_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+
+print("Expression:")
+print(train.shape)
+
+
+# Fix sample column
+
+if "Sample" not in train.columns:
+
+    if "Unnamed: 0" in train.columns:
+
+        train.rename(
+            columns={
+                "Unnamed: 0":"Sample"
+            },
+            inplace=True
+        )
+
+
+print(train.head())
+
+
+train = train.merge(
+    labels,
+    on="Sample"
+)
+
+
+print("\nTraining merged:")
+print(train.shape)
+
+
+# ===============================
+# Load external GSE165082
+# ===============================
+
+print("\nLoading GSE165082...")
+
+
+ext = pd.read_csv(
+    "data/GSE165082_gene_symbol.csv"
+)
+
+
+ext = ext.set_index(
+    "GeneSymbol"
+)
+
+
+# genes as columns
+
+ext = ext.T
+
+
+print("External:")
+print(ext.shape)
+
+
+
+# Labels external
+
+ext_labels=[]
+
+
+for s in ext.index:
+
+    if "PD" in s:
+        ext_labels.append(1)
+
+    elif "CC" in s:
+        ext_labels.append(0)
+
+
+y_ext=np.array(ext_labels)
+
+
+
+print("\nExternal classes:")
+print(
+pd.Series(y_ext).value_counts()
+)
+
+
+
+# ===============================
+# Common genes
+# ===============================
+
+
+available = [
+    g for g in genes
+    if g in train.columns and g in ext.columns
+]
+
+
+print("\nAvailable genes:")
+print(available)
+
+print(
+"Number:",
+len(available)
+)
+
+
+X_train = train[available]
+
+y_train = train["Label"]
+
+
+X_ext = ext[available]
+
+
+
+# ===============================
+# Combine
+# ===============================
+
+
+combined = pd.concat(
+    [
+        X_train,
+        X_ext
+    ],
+    axis=0
+)
+
+
+
+# log transform
+
+combined = np.log2(
+    combined + 1
+)
+
+
+
+batch = np.array(
+    [0]*len(X_train)
+    +
+    [1]*len(X_ext)
+)
+
+
+
+# ===============================
+# Batch centering
+# ===============================
+
+
+corrected = combined.copy()
+
+
+global_mean = corrected.mean()
+
+
+for b in np.unique(batch):
+
+    idx = batch == b
+
+    corrected.iloc[idx] = (
+        corrected.iloc[idx]
+        -
+        corrected.iloc[idx].mean()
+        +
+        global_mean
+    )
+
+
+
+X_train_corr = corrected.iloc[
+    :len(X_train)
+]
+
+
+X_ext_corr = corrected.iloc[
+    len(X_train):
+]
+
+
+
+# ===============================
+# Scaling
+# ===============================
+
+
+scaler = StandardScaler()
+
+
+X_train_scaled = scaler.fit_transform(
+    X_train_corr
+)
+
+
+X_ext_scaled = scaler.transform(
+    X_ext_corr
+)
+
+
+
+# ===============================
+# Models
+# ===============================
+
+
+models = {
+
+"Logistic":
+LogisticRegression(
+    max_iter=5000,
+    random_state=42
+),
+
+
+"SVM":
+SVC(
+    probability=True,
+    random_state=42
+)
+
+}
+
+
+
+results=[]
+
+
+for name,model in models.items():
+
+
+    print("\n================")
+    print(name)
+    print("================")
+
+
+    model.fit(
+        X_train_scaled,
+        y_train
+    )
+
+
+    prob = model.predict_proba(
+        X_ext_scaled
+    )[:,1]
+
+
+    pred = model.predict(
+        X_ext_scaled
+    )
+
+
+    auc = roc_auc_score(
+        y_ext,
+        prob
+    )
+
+
+    acc = accuracy_score(
+        y_ext,
+        pred
+    )
+
+
+    print(
+        "AUC:",
+        auc
+    )
+
+
+    print(
+        "Accuracy:",
+        acc
+    )
+
+
+    print(
+        confusion_matrix(
+            y_ext,
+            pred
+        )
+    )
+
+
+    results.append(
+        [
+            name,
+            auc,
+            acc
+        ]
+    )
+
+
+
+# ===============================
+# Save results
+# ===============================
+
+
+pd.DataFrame(
+    results,
+    columns=[
+        "Model",
+        "AUC",
+        "Accuracy"
+    ]
+).to_csv(
+    "data/batch_external_results.csv",
+    index=False
+)
+
+
+
+# ===============================
+# PCA
+# ===============================
+
+
+pca=PCA(
+    n_components=2
+)
+
+
+pc=pca.fit_transform(
+    corrected
+)
+
+
+
+plt.figure(
+    figsize=(7,5)
+)
+
+
+plt.scatter(
+    pc[:len(X_train),0],
+    pc[:len(X_train),1],
+    label="GSE99039"
+)
+
+
+plt.scatter(
+    pc[len(X_train):,0],
+    pc[len(X_train):,1],
+    label="GSE165082"
+)
+
+
+plt.legend()
+
+plt.title(
+    "Batch Corrected PCA"
+)
+
+
+plt.savefig(
+    "data/batch_corrected_PCA.png"
+)
+
+
+print("\nFinished")
+print(
+"Saved:"
+)
+
+print(
+"data/batch_external_results.csv"
+)
+
+print(
+"data/batch_corrected_PCA.png"
+)
+
+
+===== FILE: preprocessing\external_validation_GSE165082.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score,
+    confusion_matrix,
+    classification_report
+)
+
+import joblib
+
+
+# ==================================
+# Genes from robust final signature
+# ==================================
+
+genes = [
+    'PTGDS',
+    'KIR2DL1',
+    'DGKK',
+    'KIR2DL3',
+    'LILRB1',
+    'KIAA0319L',
+    'PPP4C',
+    'TYROBP',
+    'MBOAT7',
+    'MMP9',
+    'HLA-C',
+    'LRRC25',
+    'KIR3DL1',
+    'BCL2',
+    'RHOG'
+]
+
+
+# ==================================
+# Load GSE165082 external dataset
+# ==================================
+
+print("Loading GSE165082")
+
+ext = pd.read_csv(
+    "data/GSE165082_gene_symbol.csv"
+)
+
+
+ext = ext.set_index(
+    "GeneSymbol"
+)
+
+
+# transpose
+ext = ext.T
+
+
+print("External:")
+print(ext.shape)
+
+
+# ==================================
+# Create labels from sample names
+# ==================================
+
+labels=[]
+
+for sample in ext.index:
+
+    if "PD" in sample:
+        labels.append(1)
+
+    elif "CC" in sample:
+        labels.append(0)
+
+    else:
+        labels.append(np.nan)
+
+
+y_ext = pd.Series(
+    labels,
+    index=ext.index
+)
+
+
+mask = ~y_ext.isna()
+
+
+ext = ext.loc[mask]
+y_ext = y_ext.loc[mask]
+
+
+print("\nExternal classes:")
+print(y_ext.value_counts())
+
+
+# ==================================
+# Load training dataset
+# ==================================
+
+print("\nLoading GSE99039")
+print("\nLoading GSE99039")
+
+
+train = pd.read_csv(
+    "data/GSE99039_final_dataset.csv"
+)
+
+
+labels = pd.read_csv(
+    "data/GSE99039_labels.csv"
+)
+
+
+# پیدا کردن ستون نمونه
+
+if "Sample" in train.columns:
+
+    sample_col = "Sample"
+
+elif "Unnamed: 0" in train.columns:
+
+    train = train.rename(
+        columns={"Unnamed: 0":"Sample"}
+    )
+
+    sample_col="Sample"
+
+else:
+
+    raise Exception(
+        "No Sample column found"
+    )
+
+
+print(train.head())
+
+
+train = train.merge(
+    labels,
+    on="Sample"
+)
+
+
+print(
+"Training merged:",
+train.shape
+)
+
+X_train = train[genes]
+
+y_train = train["Label"]
+
+
+# ==================================
+# Common genes
+# ==================================
+
+available = [
+    g for g in genes
+    if g in ext.columns
+]
+
+
+print("\nGenes used:")
+print(available)
+
+
+# train and external only common genes
+
+X_train = X_train[available]
+
+X_ext = ext[available]
+
+
+print(
+"\nFeature number:",
+len(available)
+)
+
+
+# ==================================
+# Normalize
+# ==================================
+
+scaler = StandardScaler()
+
+
+X_train_scaled = scaler.fit_transform(
+    X_train
+)
+
+
+X_ext_scaled = scaler.transform(
+    X_ext
+)
+
+
+
+# ==================================
+# Train final model
+# ==================================
+
+model = LogisticRegression(
+    max_iter=5000,
+    random_state=42
+)
+
+
+model.fit(
+    X_train_scaled,
+    y_train
+)
+
+
+# ==================================
+# External prediction
+# ==================================
+
+prob = model.predict_proba(
+    X_ext_scaled
+)[:,1]
+
+
+pred = model.predict(
+    X_ext_scaled
+)
+
+
+# ==================================
+# Results
+# ==================================
+
+auc = roc_auc_score(
+    y_ext,
+    prob
+)
+
+
+acc = accuracy_score(
+    y_ext,
+    pred
+)
+
+
+print("\n======================")
+print("External Validation")
+print("======================")
+
+
+print(
+"AUC:",
+auc
+)
+
+
+print(
+"Accuracy:",
+acc
+)
+
+
+print("\nConfusion Matrix")
+
+print(
+confusion_matrix(
+    y_ext,
+    pred
+)
+)
+
+
+print(
+classification_report(
+    y_ext,
+    pred
+)
+)
+
+
+
+# save
+
+result = pd.DataFrame(
+{
+"Sample":ext.index,
+"True_Label":y_ext,
+"Prediction":pred,
+"PD_probability":prob
+}
+)
+
+
+result.to_csv(
+"data/GSE165082_external_validation_results.csv",
+index=False
+)
+
+
+print("\nSaved:")
+print(
+"data/GSE165082_external_validation_results.csv"
+)
+
+
+===== FILE: preprocessing\external_validation_normalized.py =====
+
+import pandas as pd
+import numpy as np
+import joblib
+
+from sklearn.metrics import (
+    accuracy_score,
+    roc_auc_score,
+    confusion_matrix,
+    classification_report
+)
+
+
+print("="*60)
+print("NORMALIZED EXTERNAL VALIDATION GSE165082")
+print("="*60)
+
+
+# ==========================
+# Load model and scaler
+# ==========================
+
+model = joblib.load(
+    "model/final_parkinson_logistic_model.pkl"
+)
+
+scaler = joblib.load(
+    "model/final_scaler.pkl"
+)
+
+
+genes = open(
+    "model/final_genes.txt"
+).read().splitlines()
+
+
+
+# ==========================
+# Load external RNA-seq
+# ==========================
+
+ext = pd.read_csv(
+    "data/GSE165082_gene_symbol.csv"
+)
+
+
+ext = ext.set_index(
+    "GeneSymbol"
+)
+
+
+
+# ==========================
+# CPM normalization
+# ==========================
+
+library_size = ext.sum(axis=0)
+
+
+cpm = ext.div(
+    library_size,
+    axis=1
+) * 1e6
+
+
+
+log_cpm = np.log2(
+    cpm + 1
+)
+
+
+
+# transpose samples x genes
+
+X_ext = log_cpm.T
+
+
+
+# ==========================
+# Labels
+# ==========================
+
+labels=[]
+
+
+for s in X_ext.index:
+
+    if "PD" in s:
+        labels.append(1)
+
+    elif "CC" in s:
+        labels.append(0)
+
+
+y_ext=np.array(labels)
+
+
+
+# ==========================
+# Select genes
+# ==========================
+
+X_ext = X_ext[genes]
+
+
+
+# ==========================
+# Same scaler
+# ==========================
+
+X_scaled = scaler.transform(
+    X_ext
+)
+
+
+
+# ==========================
+# Prediction
+# ==========================
+
+prob = model.predict_proba(
+    X_scaled
+)[:,1]
+
+
+pred = model.predict(
+    X_scaled
+)
+
+
+
+# ==========================
+# Results
+# ==========================
+
+print("\nProbability:")
+print(prob)
+
+
+print("\nConfusion Matrix:")
+print(
+    confusion_matrix(
+        y_ext,
+        pred
+    )
+)
+
+
+print(
+"\nAccuracy:",
+accuracy_score(
+    y_ext,
+    pred
+)
+)
+
+
+print(
+"AUC:",
+roc_auc_score(
+    y_ext,
+    prob
+)
+)
+
+
+print(
+classification_report(
+    y_ext,
+    pred
+)
+)
+
+
+result=pd.DataFrame(
+{
+"Sample":X_ext.index,
+"True_Label":y_ext,
+"Prediction":pred,
+"PD_probability":prob
+}
+)
+
+
+result.to_csv(
+"results/GSE165082_normalized_external_validation.csv",
+index=False
+)
+
+
+print("\nSaved:")
+print(
+"results/GSE165082_normalized_external_validation.csv"
+)
+
+
+===== FILE: preprocessing\evaluate_GSE165082_models.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
+
+from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
+
+
+print("="*60)
+print("Loading GSE165082 Dataset")
+print("="*60)
+
+
+# ===============================
+# Load expression data
+# ===============================
+
+df = pd.read_csv(
+    "data/GSE165082_PD-CC.counts.txt",
+    sep="\t"
+)
+
+
+# Gene column
+genes = df["Geneid"]
+
+
+X = df.drop(
+    "Geneid",
+    axis=1
+)
+
+
+# ===============================
+# Filter low expression genes
+# ===============================
+
+X = X[X.sum(axis=1) >= 10]
+
+
+# ===============================
+# Normalize
+# ===============================
+
+X = np.log2(
+    X + 1
+)
+
+
+# ===============================
+# Transpose
+# samples as rows
+# ===============================
+
+X = X.T
+
+
+# ===============================
+# Create labels
+# ===============================
+
+labels = []
+
+
+for sample in X.index:
+
+    if "PD" in sample:
+        labels.append(1)
+
+    elif "CC" in sample:
+        labels.append(0)
+
+    else:
+        labels.append(None)
+
+
+
+y = pd.Series(
+    labels,
+    index=X.index
+)
+
+
+# remove unknown samples
+
+mask = y.notna()
+
+X = X[mask]
+
+y = y[mask]
+
+
+print("Samples:")
+print(X.shape)
+
+
+print("\nClasses:")
+print(y.value_counts())
+
+
+
+# ===============================
+# Select top 500 genes
+# ===============================
+
+
+correlations = []
+
+
+for gene in X.columns:
+
+    corr = abs(
+        np.corrcoef(
+            X[gene],
+            y
+        )[0,1]
+    )
+
+    correlations.append(
+        corr
+    )
+
+
+gene_scores = pd.DataFrame({
+
+    "Gene":X.columns,
+
+    "Score":correlations
+
+})
+
+
+top_genes = gene_scores.sort_values(
+    "Score",
+    ascending=False
+).head(500)["Gene"]
+
+
+
+X = X[top_genes]
+
+
+
+print("\nSelected genes:")
+print(X.shape)
+
+
+
+# ===============================
+# Split
+# ===============================
+
+
+X_train, X_test, y_train, y_test = train_test_split(
+
+    X,
+    y,
+
+    test_size=0.2,
+
+    stratify=y,
+
+    random_state=42
+
+)
+
+
+
+# ===============================
+# Scaling
+# ===============================
+
+
+scaler = StandardScaler()
+
+
+X_train = scaler.fit_transform(
+    X_train
+)
+
+
+X_test = scaler.transform(
+    X_test
+)
+
+
+
+# ===============================
+# Models
+# ===============================
+
+
+models = {
+
+
+"Logistic Regression":
+LogisticRegression(
+    max_iter=2000
+),
+
+
+"SVM":
+SVC(
+    kernel="linear",
+    probability=True
+),
+
+
+"MLP":
+MLPClassifier(
+    hidden_layer_sizes=(32,16),
+    max_iter=2000,
+    random_state=42
+)
+
+}
+
+
+
+results=[]
+
+
+
+for name,model in models.items():
+
+
+    print("\n")
+    print(name)
+
+
+    model.fit(
+        X_train,
+        y_train
+    )
+
+
+    pred=model.predict(
+        X_test
+    )
+
+
+    prob=model.predict_proba(
+        X_test
+    )[:,1]
+
+
+    acc=accuracy_score(
+        y_test,
+        pred
+    )
+
+
+    auc=roc_auc_score(
+        y_test,
+        prob
+    )
+
+
+    print("Accuracy:",acc)
+    print("AUC:",auc)
+
+    print(
+        confusion_matrix(
+            y_test,
+            pred
+        )
+    )
+
+
+    results.append({
+
+        "Dataset":"GSE165082",
+
+        "Model":name,
+
+        "Number_of_Genes":500,
+
+        "Accuracy":round(acc,4),
+
+        "AUC":round(auc,4)
+
+    })
+
+
+
+# Save
+
+results=pd.DataFrame(results)
+
+
+print("\nFINAL TABLE")
+print(results)
+
+
+
+results.to_csv(
+    "results/GSE165082_model_comparison.csv",
+    index=False
+)
+
+
+print("\nSaved")
+
+
+===== FILE: models\train_test_split.py =====
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+
+
+# خواندن داده
+df = pd.read_csv(
+    "data/GSE165082_PD-CC.counts.txt",
+    sep="\t"
+)
+
+# جدا کردن ژن‌ها
+genes = df["Geneid"]
+
+counts = df.drop("Geneid", axis=1)
+
+# Filtering
+filtered = counts[counts.sum(axis=1) >= 10]
+
+# Normalization
+normalized = np.log2(filtered + 1)
+
+# تبدیل نمونه‌ها به سطر
+X = normalized.T
+
+# ساخت Label
+y = []
+
+for sample in X.index:
+    if "PD" in sample:
+        y.append(1)
+    else:
+        y.append(0)
+
+y = pd.Series(y, index=X.index)
+
+
+# تقسیم داده
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+
+print("X_train shape:")
+print(X_train.shape)
+
+print("\nX_test shape:")
+print(X_test.shape)
+
+print("\ny_train:")
+print(y_train.value_counts())
+
+print("\ny_test:")
+print(y_test.value_counts())
+
+
+===== FILE: leakage_free_pipeline\train.py =====
+
+import os
+import pandas as pd
+import numpy as np
+import joblib
+
+
+from sklearn.model_selection import (
+    StratifiedKFold,
+    cross_val_predict
+)
+
+from sklearn.pipeline import Pipeline
+
+from sklearn.preprocessing import (
+    StandardScaler,
+    FunctionTransformer
+)
+
+from sklearn.feature_selection import (
+    SelectKBest,
+    f_classif
+)
+
+from sklearn.linear_model import LogisticRegression
+
+
+from sklearn.metrics import (
+    roc_auc_score,
+    accuracy_score,
+    classification_report
+)
+
+
+
+print("==============================")
+print("FINAL LEAKAGE FREE PARKINSON MODEL")
+print("==============================")
+
+
+
+# =====================================
+# Custom functions
+# =====================================
+
+
+def log_transform(X):
+    """
+    Log2 normalization
+    """
+    return np.log2(X + 1)
+
+
+
+
+# =====================================
+# Paths
+# =====================================
+
+
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
+
+
+
+DATA_PATH = os.path.join(
+    BASE_DIR,
+    "data",
+    "GSE99039_final_dataset.csv"
+)
+
+
+
+MODEL_DIR = os.path.join(
+    BASE_DIR,
+    "models"
+)
+
+
+os.makedirs(
+    MODEL_DIR,
+    exist_ok=True
+)
+
+
+
+print("\nProject:")
+print(BASE_DIR)
+
+
+print("\nDataset:")
+print(DATA_PATH)
+
+
+
+
+# =====================================
+# Load dataset
+# =====================================
+
+
+df = pd.read_csv(
+    DATA_PATH
+)
+
+
+
+print("\nOriginal dataset:")
+print(df.shape)
+
+
+
+print("\nColumns:")
+print(df.columns[:10])
+
+
+
+
+# =====================================
+# Remove identifiers
+# =====================================
+
+
+for col in [
+    "Unnamed: 0",
+    "Sample"
+]:
+
+    if col in df.columns:
+
+        df = df.drop(
+            columns=[col]
+        )
+
+
+
+
+
+# =====================================
+# Prepare X y
+# =====================================
+
+
+y = df["Disease"].map(
+    {
+        "CONTROL":0,
+        "IPD":1
+    }
+)
+
+
+
+X = df.drop(
+    columns=["Disease"]
+)
+
+
+
+# keep only genes
+
+X = X.select_dtypes(
+    include=[np.number]
+)
+
+
+
+print("\nFeature matrix:")
+print(X.shape)
+
+
+
+print("\nClasses:")
+print(y.value_counts())
+
+
+
+gene_names = X.columns.to_list()
+
+
+
+
+# =====================================
+# Leakage free Pipeline
+# =====================================
+
+
+pipeline = Pipeline([
+
+
+    (
+        "log_transform",
+
+        FunctionTransformer(
+            log_transform
+        )
+
+    ),
+
+
+
+    (
+        "feature_selection",
+
+        SelectKBest(
+            score_func=f_classif,
+            k=500
+        )
+
+    ),
+
+
+
+    (
+        "scaler",
+
+        StandardScaler()
+
+    ),
+
+
+
+    (
+        "classifier",
+
+        LogisticRegression(
+
+            max_iter=5000,
+
+            random_state=42
+
+        )
+
+    )
+
+])
+
+
+
+
+
+# =====================================
+# Cross Validation
+# =====================================
+
+
+cv = StratifiedKFold(
+
+    n_splits=10,
+
+    shuffle=True,
+
+    random_state=42
+
+)
+
+
+
+print("\nRunning cross validation...")
+
+
+
+prob = cross_val_predict(
+
+    pipeline,
+
+    X,
+
+    y,
+
+    cv=cv,
+
+    method="predict_proba"
+
+)[:,1]
+
+
+
+
+pred = (
+
+    prob >= 0.5
+
+).astype(int)
+
+
+
+
+
+auc = roc_auc_score(
+
+    y,
+
+    prob
+
+)
+
+
+
+acc = accuracy_score(
+
+    y,
+
+    pred
+
+)
+
+
+
+
+print("\n===================")
+print("RESULTS")
+print("===================")
+
+
+
+print(
+    "AUC:",
+    auc
+)
+
+
+
+print(
+    "Accuracy:",
+    acc
+)
+
+
+
+print(
+    classification_report(
+        y,
+        pred
+    )
+)
+
+
+
+
+# =====================================
+# Train final model
+# =====================================
+
+
+print("\nTraining final pipeline...")
+
+
+
+pipeline.fit(
+
+    X,
+
+    y
+
+)
+
+
+
+
+# =====================================
+# Extract selected genes
+# =====================================
+
+
+selector = pipeline.named_steps[
+    "feature_selection"
+]
+
+
+
+mask = selector.get_support()
+
+
+
+selected_genes = np.array(
+    gene_names
+)[mask]
+
+
+
+print("\nSelected genes:")
+print(len(selected_genes))
+
+
+print(
+    selected_genes[:20]
+)
+
+
+
+
+# =====================================
+# Save pipeline
+# =====================================
+
+
+pipeline_file = os.path.join(
+
+    MODEL_DIR,
+
+    "final_leakage_free_pipeline.pkl"
+
+)
+
+
+
+joblib.dump(
+
+    pipeline,
+
+    pipeline_file
+
+)
+
+
+
+
+# =====================================
+# Save selected genes
+# =====================================
+
+
+genes_file = os.path.join(
+
+    MODEL_DIR,
+
+    "final_selected_500_genes.txt"
+
+)
+
+
+
+with open(
+
+    genes_file,
+
+    "w"
+
+) as f:
+
+
+    for gene in selected_genes:
+
+        f.write(
+            gene + "\n"
+        )
+
+
+
+
+
+# =====================================
+# Save metadata
+# =====================================
+
+
+metadata = {
+
+
+    "dataset":
+
+    "GSE99039",
+
+
+
+    "samples":
+
+    int(X.shape[0]),
+
+
+
+    "original_features":
+
+    int(len(gene_names)),
+
+
+
+    "selected_features":
+
+    int(len(selected_genes)),
+
+
+
+    "feature_selection":
+
+    "SelectKBest f_classif inside pipeline",
+
+
+
+    "normalization":
+
+    "log2(X+1)",
+
+
+
+    "scaler":
+
+    "StandardScaler inside pipeline",
+
+
+
+    "model":
+
+    "LogisticRegression"
+
+}
+
+
+
+metadata_file = os.path.join(
+
+    MODEL_DIR,
+
+    "model_metadata.pkl"
+
+)
+
+
+
+joblib.dump(
+
+    metadata,
+
+    metadata_file
+
+)
+
+
+
+
+print("\nSaved:")
+
+print(
+    pipeline_file
+)
+
+
+print(
+    genes_file
+)
+
+
+print(
+    metadata_file
+)
+
+
+
+print("\nFINISHED")

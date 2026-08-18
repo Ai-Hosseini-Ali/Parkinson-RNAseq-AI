@@ -1,0 +1,227 @@
+============================================================
+Parkinson Disease Prediction Using Gene Expression and Machine Learning
+============================================================
+
+
+1. Project Overview
+------------------------------------------------------------
+
+This project focuses on developing an Artificial Intelligence
+framework for Parkinson's Disease prediction using gene
+expression data.
+
+The main goal is to identify important molecular biomarkers
+and build a machine learning model capable of classifying
+Parkinson's Disease and healthy control samples.
+
+
+------------------------------------------------------------
+
+2. Dataset Information
+------------------------------------------------------------
+
+Main Dataset:
+
+GSE99039 Gene Expression Dataset
+
+
+Dataset Characteristics:
+
+- Number of samples: 438
+- Number of genes: 21758
+- Classes:
+    - Parkinson Disease (PD)
+    - Control (CC)
+
+
+External Dataset:
+
+GSE165082 RNA-seq Dataset
+
+Used for independent validation.
+
+
+------------------------------------------------------------
+
+3. Data Processing Pipeline
+------------------------------------------------------------
+
+The workflow includes:
+
+1. Data preprocessing
+
+2. Gene expression normalization
+
+3. Differential Expression Analysis
+
+4. Biomarker identification
+
+5. Feature selection
+
+6. Machine Learning classification
+
+
+------------------------------------------------------------
+
+4. Biomarker Selection
+------------------------------------------------------------
+
+A final 14-gene signature was selected:
+
+
+1. PTGDS
+2. KIR2DL1
+3. KIR2DL3
+4. LILRB1
+5. KIAA0319L
+6. PPP4C
+7. TYROBP
+8. MBOAT7
+9. MMP9
+10. HLA-C
+11. LRRC25
+12. KIR3DL1
+13. BCL2
+14. RHOG
+
+
+These genes were selected based on:
+
+- Differential expression analysis
+- Feature importance
+- Stability analysis
+- Biological relevance
+
+
+
+------------------------------------------------------------
+
+5. Machine Learning Models
+------------------------------------------------------------
+
+Three machine learning algorithms were evaluated:
+
+
+1. Logistic Regression
+
+2. Support Vector Machine (SVM)
+
+3. Multi Layer Perceptron (MLP)
+
+
+
+------------------------------------------------------------
+
+6. Model Performance
+------------------------------------------------------------
+
+Final evaluation on GSE99039:
+
+
+Model                 Accuracy       AUC
+
+Logistic Regression   0.7273        0.7763
+
+SVM                   0.7500        0.7566
+
+MLP                   0.5341        0.5537
+
+
+
+------------------------------------------------------------
+
+7. Final Model
+------------------------------------------------------------
+
+The final prediction model:
+
+Algorithm:
+Logistic Regression
+
+
+Input:
+14 gene biomarker signature
+
+
+Preprocessing:
+
+- Log transformation
+- StandardScaler normalization
+
+
+Output:
+
+Probability of Parkinson Disease
+
+
+
+------------------------------------------------------------
+
+8. Model Interpretation
+------------------------------------------------------------
+
+The Logistic Regression coefficients were analyzed
+to understand gene contribution.
+
+Important genes:
+
+- PTGDS
+- MMP9
+- PPP4C
+- LRRC25
+- KIR2DL1
+
+
+This provides explainability for the AI model.
+
+
+
+------------------------------------------------------------
+
+9. External Validation
+------------------------------------------------------------
+
+An independent dataset (GSE165082) was evaluated.
+
+Because the datasets were generated using different
+platforms (Microarray and RNA-seq), additional
+normalization and batch correction are required
+for optimal cross-platform validation.
+
+
+This highlights the importance of dataset harmonization
+in biomedical AI applications.
+
+
+
+------------------------------------------------------------
+
+10. Conclusion
+------------------------------------------------------------
+
+This project demonstrates the application of Artificial
+Intelligence in Parkinson Disease biomarker discovery.
+
+Main achievements:
+
+- Identification of a 14-gene signature
+
+- Development of machine learning classifiers
+
+- Explainable AI using gene contribution analysis
+
+- Creation of a prediction pipeline
+
+
+Future improvements:
+
+- Larger RNA-seq validation datasets
+
+- Batch correction methods
+
+- Integration with clinical and imaging data
+
+
+============================================================
+END OF PRESENTATION
+============================================================

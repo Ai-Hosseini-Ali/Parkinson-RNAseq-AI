@@ -1,0 +1,4 @@
+Dataset,Model,Number_of_Genes,Accuracy,AUC
+GSE99039,Logistic Regression,14,0.7273,0.7763
+GSE99039,SVM,14,0.75,0.7566
+GSE99039,MLP,14,0.5341,0.5537

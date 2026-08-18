@@ -1,0 +1,8 @@
+{
+  "cv_auc": 0.7013712969747723,
+  "cv_accuracy": 0.6621004566210046,
+  "n_splits": 10,
+  "gene_signature_version": "v1_2026-08-09",
+  "n_genes": 14,
+  "n_samples": 438
+}
