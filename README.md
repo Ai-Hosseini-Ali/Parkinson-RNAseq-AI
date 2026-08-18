@@ -14,6 +14,8 @@ The workflow includes:
 - Biomarker discovery
 - Machine learning classification
 - External validation
+
+
 # Research Workflow
 
 RNA-Seq / Gene Expression Data
@@ -41,6 +43,8 @@ Machine Learning Classification
 ↓
 
 External Validation
+
+
 # Datasets
 
 ## Training Dataset
@@ -70,6 +74,8 @@ Used for:
 
 - External validation
 - Performance evaluation
+
+
 # Computational Pipeline
 
 ## 1. Data Preprocessing
@@ -95,6 +101,8 @@ Integrated approaches:
 - Machine learning feature importance
 - Stability selection
 - Biological filtering
+
+
 ## 4. Machine Learning Models
 
 Models evaluated:
@@ -123,10 +131,11 @@ Models evaluated:
 |---|---|
 | Accuracy | 53.8% |
 | AUC | 0.625 |
+
+
 # Final Gene Signature
 
 The final gene signature was selected using stability-based feature selection and machine learning optimization.
-
 
 Selected genes:
 
@@ -145,6 +154,7 @@ Selected genes:
 - BCL2
 - RHOG
 
+
 # Project Structure
 
 ```text
@@ -160,6 +170,7 @@ Parkinson-RNAseq-AI/
 └── docs/
 ```
 
+
 # Installation
 
 Clone repository:
@@ -173,6 +184,7 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
 
 # Technologies
 
@@ -206,11 +218,3 @@ Ali Hoseini (2026)
 GitHub Repository:
 
 https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI
-
-Parkinson Disease Prediction Using RNA-Seq and Machine Learning
-
-
-GitHub Repository:
-
-https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI
-
