@@ -1,128 +1,219 @@
-# Parkinson Disease AI Prediction Using RNA-Seq
+# Parkinson Disease Prediction Using RNA-Seq and Machine Learning
 
 ## Overview
 
-This project develops a machine learning pipeline for Parkinson's disease classification using transcriptomic gene expression data.
+This project develops a reproducible machine learning pipeline for Parkinson's disease (PD) prediction using transcriptomic gene expression data.
 
-The goal is to identify a robust gene signature and evaluate machine learning models for Parkinson's disease prediction.
+The main objective is to identify robust gene expression signatures and evaluate machine learning models for Parkinson's disease classification.
 
----
+The workflow includes:
 
-## Datasets
-
-### Training Dataset
-
-GSE99039
-
-- Platform: Gene expression profiling
-- Used for:
-  - Feature selection
-  - Biomarker discovery
-  - Model training
+- Gene expression preprocessing
+- Differential expression analysis
+- Feature selection
+- Biomarker discovery
+- Machine learning classification
+- External validation
 
 
-### External Validation Dataset
+## Research Workflow
 
-GSE165082
+RNA-Seq / Gene Expression Data
 
-- Independent dataset
-- Used for external validation
+↓
 
----
+Data Preprocessing
 
-# Pipeline
+↓
 
-The workflow consists of:
+Differential Expression Analysis
 
-## 1. Data preprocessing
+↓
 
-- Gene expression preparation
-- Annotation
-- Quality checking
+Feature Selection
+
+↓
+
+Gene Signature Construction
+
+↓
+
+Machine Learning Classification
+
+↓
+
+External Validation
+
+
+# Datasets
+
+## Training Dataset
+
+## GSE99039
+
+Source:
+
+NCBI Gene Expression Omnibus (GEO)
+
+
+Used for:
+
+- Feature selection
+- Biomarker discovery
+- Model training
+
+
+## External Validation Dataset
+
+## GSE165082
+
+Independent GEO dataset used for evaluating model generalization.
+
+
+Used for:
+
+- External validation
+- Performance evaluation
+
+
+# Computational Pipeline
+
+## 1. Data Preprocessing
+
+Steps:
+
+- Gene expression matrix preparation
+- Quality control
+- Gene annotation
+- Expression normalization
 
 
 ## 2. Differential Expression Analysis
 
-Identification of genes associated with Parkinson's disease.
+Identification of genes associated with Parkinson's disease by comparing Parkinson's disease and control samples.
 
 
 ## 3. Feature Selection
 
-Methods:
+Integrated approaches:
 
-- Machine learning importance
-- Differential expression
-- PPI network analysis
+- Differential expression analysis
+- Machine learning feature importance
 - Stability selection
+- Biological filtering
 
 
-## 4. Gene Signature Construction
+## 4. Machine Learning Models
 
-Final locked signature:
-
----
-
-# Machine Learning Models
-
-Evaluated models:
+Models evaluated:
 
 - Logistic Regression
-- Support Vector Machine
+- Support Vector Machine (SVM)
 - Random Forest
 
 
----
+# Model Performance
 
-# Results
-
-## Training Dataset (GSE99039)
-
-Best model:
-
-Logistic Regression
+## Training Dataset: GSE99039
 
 
-Accuracy:
-
-72.7%
-
-
-AUC:
-
-0.776
+| Model | Features | Accuracy | AUC |
+|---|---|---|---|
+| Logistic Regression | 14 genes | 72.7% | 0.776 |
+| Support Vector Machine | 14 genes | 75.0% | 0.756 |
+| Random Forest | Selected genes | Evaluated | Evaluated |
 
 
----
-
-## External Validation
-
-Dataset:
-
-GSE165082
+## External Validation: GSE165082
 
 
-Accuracy:
-
-53.8%
-
-
-AUC:
-
-0.625
+| Metric | Value |
+|---|---|
+| Accuracy | 53.8% |
+| AUC | 0.625 |
 
 
----
+# Final Gene Signature
+
+The final gene signature was selected using stability-based feature selection and machine learning optimization.
+
+
+Selected genes:
+
+- PTGDS
+- KIR2DL1
+- KIR2DL3
+- LILRB1
+- KIAA0319L
+- PPP4C
+- TYROBP
+- MBOAT7
+- MMP9
+- HLA-C
+- LRRC25
+- KIR3DL1
+- BCL2
+- RHOG
+
 
 # Project Structure
 
----
+Parkinson-RNAseq-AI/
+
+- README.md
+- requirements.txt
+- data/
+- preprocessing/
+- pipeline/
+- models/
+- results/
+- docs/
+
+
+# Installation
+
+Clone repository:
+
+
+git clone https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI.git
+
+
+Install dependencies:
+
+
+pip install -r requirements.txt
+
+
+# Technologies
+
+- Python
+- NumPy
+- Pandas
+- Scikit-learn
+- SciPy
+- Matplotlib
+- Bioinformatics tools
+- GEO datasets
+
 
 # Future Work
 
 Planned extensions:
 
-- Larger datasets (PPMI)
-- RNA-Seq + MRI multimodal learning
+- Validation on larger cohorts (PPMI)
+- RNA-seq + MRI multimodal learning
 - Deep learning models
-- Explainable AI
+- Explainable AI (XAI)
 - Clinical validation
+
+
+# Citation
+
+Ali Hoseini (2026)
+
+Parkinson Disease Prediction Using RNA-Seq and Machine Learning
+
+
+GitHub Repository:
+
+https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI
