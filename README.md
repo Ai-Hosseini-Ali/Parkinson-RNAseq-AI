@@ -73,7 +73,6 @@ Biological filtering
 4. Machine Learning Models
 
 Evaluated models:
-
 Logistic Regression
 Support Vector Machine (SVM)
 Random Forest
