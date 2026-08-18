@@ -62,3 +62,26 @@ Thumbs.db
 
 *.log
 *.tmp
+# Raw datasets
+data/*.txt
+data/*.csv
+data/raw/
+
+# GEO annotation files
+*.annot
+
+# Software builds
+archive/software_build/
+build/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+
+# Models temporary
+*.tmp
