@@ -146,6 +146,8 @@ Selected genes:
 - RHOG
 
 # Project Structure
+
+```text
 Parkinson-RNAseq-AI/
 
 ├── README.md
@@ -156,7 +158,7 @@ Parkinson-RNAseq-AI/
 ├── models/
 ├── results/
 └── docs/
-
+```
 
 # Installation
 
@@ -164,17 +166,14 @@ Clone repository:
 
 ```bash
 git clone https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI.git
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
-
----
-
-#Technologies
-
-```markdown
 # Technologies
 
 - Python
@@ -185,6 +184,8 @@ pip install -r requirements.txt
 - Matplotlib
 - Bioinformatics tools
 - GEO datasets
+
+
 # Future Work
 
 Planned extensions:
@@ -199,6 +200,12 @@ Planned extensions:
 # Citation
 
 Ali Hoseini (2026)
+
+**Parkinson Disease Prediction Using RNA-Seq and Machine Learning**
+
+GitHub Repository:
+
+https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI
 
 Parkinson Disease Prediction Using RNA-Seq and Machine Learning
 
