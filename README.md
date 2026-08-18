@@ -14,9 +14,7 @@ The workflow includes:
 - Biomarker discovery
 - Machine learning classification
 - External validation
-
-
-## Research Workflow
+# Research Workflow
 
 RNA-Seq / Gene Expression Data
 
@@ -43,13 +41,11 @@ Machine Learning Classification
 ↓
 
 External Validation
-
-
 # Datasets
 
 ## Training Dataset
 
-## GSE99039
+### GSE99039
 
 Source:
 
@@ -65,7 +61,7 @@ Used for:
 
 ## External Validation Dataset
 
-## GSE165082
+### GSE165082
 
 Independent GEO dataset used for evaluating model generalization.
 
@@ -74,8 +70,6 @@ Used for:
 
 - External validation
 - Performance evaluation
-
-
 # Computational Pipeline
 
 ## 1. Data Preprocessing
@@ -101,8 +95,6 @@ Integrated approaches:
 - Machine learning feature importance
 - Stability selection
 - Biological filtering
-
-
 ## 4. Machine Learning Models
 
 Models evaluated:
@@ -131,8 +123,6 @@ Models evaluated:
 |---|---|
 | Accuracy | 53.8% |
 | AUC | 0.625 |
-
-
 # Final Gene Signature
 
 The final gene signature was selected using stability-based feature selection and machine learning optimization.
@@ -155,35 +145,36 @@ Selected genes:
 - BCL2
 - RHOG
 
-
 # Project Structure
-
 Parkinson-RNAseq-AI/
 
-- README.md
-- requirements.txt
-- data/
-- preprocessing/
-- pipeline/
-- models/
-- results/
-- docs/
+├── README.md
+├── requirements.txt
+├── data/
+├── preprocessing/
+├── pipeline/
+├── models/
+├── results/
+└── docs/
 
 
 # Installation
 
 Clone repository:
 
-
+```bash
 git clone https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI.git
 
-
 Install dependencies:
-
 
 pip install -r requirements.txt
 
 
+---
+
+#Technologies
+
+```markdown
 # Technologies
 
 - Python
@@ -194,8 +185,6 @@ pip install -r requirements.txt
 - Matplotlib
 - Bioinformatics tools
 - GEO datasets
-
-
 # Future Work
 
 Planned extensions:
@@ -217,3 +206,4 @@ Parkinson Disease Prediction Using RNA-Seq and Machine Learning
 GitHub Repository:
 
 https://github.com/Ai-Hosseini-Ali/Parkinson-RNAseq-AI
+
