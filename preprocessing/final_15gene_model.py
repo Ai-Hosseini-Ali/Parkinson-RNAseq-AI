@@ -12,7 +12,6 @@ from sklearn.metrics import (
     roc_auc_score,
     accuracy_score,
     confusion_matrix,
-    classification_report,
     roc_curve
 )
 
@@ -21,56 +20,35 @@ import seaborn as sns
 import joblib
 
 
-# ============================
-# Paths
-# ============================
+# ============================================================
+# PATHS
+# ============================================================
 
-expression_file = "data/GSE99039_final_dataset.csv"
-labels_file = "data/GSE99039_labels.csv"
+dataset_file = "data/GSE99039_top100_dataset.csv"
 signature_file = "data/robust_final_signature.csv"
 
 
-# ============================
-# Load data
-# ============================
+# ============================================================
+# LOAD DATA
+# ============================================================
 
-expression = pd.read_csv(expression_file)
-labels = pd.read_csv(labels_file)
+df = pd.read_csv(dataset_file)
 signature = pd.read_csv(signature_file)
 
+print("\n==============================")
+print("GSE99039 FINAL 15-GENE MODEL")
+print("==============================")
 
-print("Expression:")
-print(expression.shape)
+print("\nDataset shape:")
+print(df.shape)
 
-print("\nLabels:")
-print(labels.head())
-
-
-# ============================
-# Fix sample column
-# ============================
-
-if "Sample" not in expression.columns:
-    expression = expression.rename(
-        columns={expression.columns[0]: "Sample"}
-    )
+print("\nClasses:")
+print(df["Disease"].value_counts())
 
 
-# Merge labels
-
-data = expression.merge(
-    labels[["Sample", "Label"]],
-    on="Sample"
-)
-
-
-print("\nMerged:")
-print(data.shape)
-
-
-# ============================
-# Select 15 genes
-# ============================
+# ============================================================
+# SELECT FINAL 15 GENES
+# ============================================================
 
 genes = (
     signature
@@ -82,65 +60,103 @@ genes = (
     .tolist()
 )
 
-
 print("\nFinal 15 genes:")
-print(genes)
+for i, gene in enumerate(genes, 1):
+    print(f"{i:02d}. {gene}")
 
+
+# ============================================================
+# CHECK GENES
+# ============================================================
 
 available = [
-    g for g in genes
-    if g in data.columns
+    gene
+    for gene in genes
+    if gene in df.columns
 ]
 
+missing = [
+    gene
+    for gene in genes
+    if gene not in df.columns
+]
 
 print("\nAvailable genes:")
-print(available)
+print(len(available))
+
+print("\nMissing genes:")
+print(missing)
 
 
+if len(available) != 15:
+    raise ValueError(
+        f"Expected 15 genes, but only {len(available)} are available."
+    )
 
-X = data[available]
 
-y = data["Label"]
+# ============================================================
+# FEATURES / LABEL
+# ============================================================
+
+X = df[available].copy()
+
+y = (
+    df["Disease"]
+    .map({
+        "CONTROL": 0,
+        "IPD": 1
+    })
+)
 
 
-print("\nClasses:")
+print("\nX shape:")
+print(X.shape)
+
+print("\ny distribution:")
 print(y.value_counts())
 
 
-# ============================
-# Models
-# ============================
+# ============================================================
+# MODELS
+# ============================================================
 
 models = {
 
-"SVM":
-Pipeline([
-    ("scale", StandardScaler()),
-    ("model",
-     SVC(
-        kernel="linear",
-        probability=True,
-        random_state=42
-     ))
-]),
+    "SVM": Pipeline([
+        (
+            "scale",
+            StandardScaler()
+        ),
+        (
+            "model",
+            SVC(
+                kernel="linear",
+                probability=True,
+                random_state=42
+            )
+        )
+    ]),
 
-
-"Logistic":
-Pipeline([
-    ("scale", StandardScaler()),
-    ("model",
-     LogisticRegression(
-        max_iter=2000,
-        random_state=42
-     ))
-])
+    "Logistic": Pipeline([
+        (
+            "scale",
+            StandardScaler()
+        ),
+        (
+            "model",
+            LogisticRegression(
+                max_iter=2000,
+                random_state=42
+            )
+        )
+    ])
 
 }
 
 
-# ============================
-# Cross validation
-# ============================
+# ============================================================
+# 10-FOLD STRATIFIED CROSS VALIDATION
+# ============================================================
 
 cv = StratifiedKFold(
     n_splits=10,
@@ -148,13 +164,16 @@ cv = StratifiedKFold(
     random_state=42
 )
 
+results = []
 
-results=[]
+predictions = {}
 
 
 for name, model in models.items():
 
-    print("\nRunning:", name)
+    print("\n==============================")
+    print("Running:", name)
+    print("==============================")
 
     pred_prob = cross_val_predict(
         model,
@@ -162,46 +181,51 @@ for name, model in models.items():
         y,
         cv=cv,
         method="predict_proba"
-    )[:,1]
-
+    )[:, 1]
 
     pred = (
         pred_prob >= 0.5
     ).astype(int)
-
 
     auc = roc_auc_score(
         y,
         pred_prob
     )
 
-
-    acc = accuracy_score(
+    accuracy = accuracy_score(
         y,
         pred
     )
 
-
-    print("AUC:", auc)
-    print("Accuracy:", acc)
-
-
-    print(
-        confusion_matrix(
-            y,
-            pred
-        )
+    cm = confusion_matrix(
+        y,
+        pred
     )
 
+    print("\nAUC:")
+    print(auc)
 
-    results.append(
-        [
-            name,
-            auc,
-            acc
-        ]
-    )
+    print("\nAccuracy:")
+    print(accuracy)
 
+    print("\nConfusion Matrix:")
+    print(cm)
+
+    results.append([
+        name,
+        auc,
+        accuracy
+    ])
+
+    predictions[name] = {
+        "prob": pred_prob,
+        "pred": pred
+    }
+
+
+# ============================================================
+# RESULTS TABLE
+# ============================================================
 
 results_df = pd.DataFrame(
     results,
@@ -212,8 +236,10 @@ results_df = pd.DataFrame(
     ]
 )
 
+print("\n==============================")
+print("FINAL RESULTS")
+print("==============================")
 
-print("\nResults:")
 print(results_df)
 
 
@@ -223,18 +249,16 @@ results_df.to_csv(
 )
 
 
-# ============================
-# Train final SVM
-# ============================
+# ============================================================
+# TRAIN FINAL SVM ON ALL DATA
+# ============================================================
 
 final_model = models["SVM"]
-
 
 final_model.fit(
     X,
     y
 )
-
 
 joblib.dump(
     final_model,
@@ -242,30 +266,50 @@ joblib.dump(
 )
 
 
-# ============================
-# ROC curve
-# ============================
+# ============================================================
+# SAVE FINAL GENES
+# ============================================================
 
-prob = cross_val_predict(
-    final_model,
-    X,
-    y,
-    cv=cv,
-    method="predict_proba"
-)[:,1]
+with open(
+    "data/final_15_genes.txt",
+    "w"
+) as f:
 
-
-fpr,tpr,_ = roc_curve(
-    y,
-    prob
-)
+    for gene in genes:
+        f.write(gene + "\n")
 
 
-plt.figure(figsize=(6,5))
+# ============================================================
+# ROC CURVE
+# ============================================================
+
+plt.figure(figsize=(6, 5))
+
+for name in predictions:
+
+    prob = predictions[name]["prob"]
+
+    fpr, tpr, _ = roc_curve(
+        y,
+        prob
+    )
+
+    auc = roc_auc_score(
+        y,
+        prob
+    )
+
+    plt.plot(
+        fpr,
+        tpr,
+        label=f"{name} (AUC={auc:.3f})"
+    )
+
 
 plt.plot(
-    fpr,
-    tpr
+    [0, 1],
+    [0, 1],
+    linestyle="--"
 )
 
 plt.xlabel(
@@ -280,6 +324,10 @@ plt.title(
     "ROC - Final 15 Gene Signature"
 )
 
+plt.legend()
+
+plt.tight_layout()
+
 plt.savefig(
     "ROC_final15.png",
     dpi=300,
@@ -289,28 +337,25 @@ plt.savefig(
 plt.close()
 
 
+# ============================================================
+# CONFUSION MATRIX - FINAL SVM
+# ============================================================
 
-# ============================
-# Confusion Matrix
-# ============================
-
-pred = (
-    prob>=0.5
-).astype(int)
-
+svm_pred = predictions["SVM"]["pred"]
 
 cm = confusion_matrix(
     y,
-    pred
+    svm_pred
 )
 
-
-plt.figure(figsize=(5,4))
+plt.figure(figsize=(5, 4))
 
 sns.heatmap(
     cm,
     annot=True,
-    fmt="d"
+    fmt="d",
+    xticklabels=["CONTROL", "IPD"],
+    yticklabels=["CONTROL", "IPD"]
 )
 
 plt.xlabel(
@@ -322,8 +367,10 @@ plt.ylabel(
 )
 
 plt.title(
-    "Confusion Matrix"
+    "Confusion Matrix - Final SVM"
 )
+
+plt.tight_layout()
 
 plt.savefig(
     "confusion_matrix_final15.png",
@@ -334,13 +381,18 @@ plt.savefig(
 plt.close()
 
 
+# ============================================================
+# FINISHED
+# ============================================================
 
-print("\n===================")
-print("FINISHED")
-print("===================")
+print("\n==============================")
+print("FINISHED SUCCESSFULLY")
+print("==============================")
 
-print("Saved:")
+print("\nSaved files:")
+
 print("data/final_15gene_model.pkl")
 print("data/final15_model_results.csv")
+print("data/final_15_genes.txt")
 print("ROC_final15.png")
 print("confusion_matrix_final15.png")

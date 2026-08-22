@@ -1,6 +1,10 @@
 import pandas as pd
+import numpy as np
 
-# load files
+
+# ==========================
+# Load files
+# ==========================
 
 ml = pd.read_csv(
     "data/GSE99039_feature_importance.csv"
@@ -19,16 +23,24 @@ stab = pd.read_csv(
 )
 
 
-# normalize scores
+# ==========================
+# Normalize ML score
+# ==========================
 
 ml["ML_score"] = (
     ml["Importance"] /
     ml["Importance"].max()
 )
-import numpy as np
+
+
+# ==========================
+# Normalize DE score
+# ==========================
 
 de["DE_score"] = (
-    -np.log10(de["FDR"])
+    -np.log10(
+        de["FDR"].clip(lower=1e-300)
+    )
 )
 
 de["DE_score"] = (
@@ -36,11 +48,20 @@ de["DE_score"] = (
     de["DE_score"].max()
 )
 
+
+# ==========================
+# Normalize PPI score
+# ==========================
+
 ppi["PPI_score"] = (
     ppi["Degree"] /
     ppi["Degree"].max()
 )
 
+
+# ==========================
+# Normalize Stability score
+# ==========================
 
 stab["Stability_score"] = (
     stab["Stability_%"] /
@@ -48,56 +69,73 @@ stab["Stability_score"] = (
 )
 
 
-# merge
+# ==========================
+# Merge all evidence
+# ==========================
 
 df = (
-    ml[["Gene","ML_score"]]
+    ml[["Gene", "ML_score"]]
     .merge(
-        de[["Gene","DE_score"]],
+        de[["Gene", "DE_score"]],
         on="Gene",
         how="inner"
     )
     .merge(
-        ppi[["Gene","PPI_score"]],
+        ppi[["Gene", "PPI_score"]],
         on="Gene",
         how="left"
     )
     .merge(
-        stab[["Gene","Stability_score"]],
+        stab[["Gene", "Stability_score"]],
         on="Gene",
         how="left"
     )
 )
 
 
+# Missing evidence = 0
+
 df = df.fillna(0)
 
 
-# final score
+# ==========================
+# Robust score
+# ==========================
 
 df["Robust_score"] = (
-    0.25*df["ML_score"]
-    +
-    0.25*df["DE_score"]
-    +
-    0.25*df["PPI_score"]
-    +
-    0.25*df["Stability_score"]
+    0.25 * df["ML_score"] +
+    0.25 * df["DE_score"] +
+    0.25 * df["PPI_score"] +
+    0.25 * df["Stability_score"]
 )
 
+
+# ==========================
+# Rank genes
+# ==========================
 
 df = df.sort_values(
     "Robust_score",
     ascending=False
-)
+).reset_index(drop=True)
 
 
-print("\nROBUST FINAL SIGNATURE\n")
+# ==========================
+# Print results
+# ==========================
+
+print("\n==============================")
+print("ROBUST FINAL SIGNATURE")
+print("==============================")
 
 print(
-    df.head(20)
+    df.head(20).to_string(index=False)
 )
 
+
+# ==========================
+# Save top 50
+# ==========================
 
 df.head(50).to_csv(
     "data/robust_final_signature.csv",
@@ -106,6 +144,4 @@ df.head(50).to_csv(
 
 
 print("\nSaved:")
-print(
-    "data/robust_final_signature.csv"
-)
+print("data/robust_final_signature.csv")
