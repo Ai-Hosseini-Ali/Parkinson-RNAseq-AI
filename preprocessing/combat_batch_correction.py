@@ -14,7 +14,7 @@ GSE99039 + GSE49036
 """)
 
 
-TRAIN_DATA = "data/GSE99039_8gene_combat.csv"
+TRAIN_DATA = "data/GSE99039_8gene_labeled.csv"
 VALID_DATA = "data/GSE49036_validation_8gene.csv"
 
 OUTPUT = "data/combat_corrected_8gene.csv"
